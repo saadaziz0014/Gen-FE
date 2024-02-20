@@ -7,6 +7,7 @@ import "./Organization.css";
 import { useNavigate } from "react-router-dom";
 
 import { useToast } from "@chakra-ui/react";
+import DonationBox from "../../components/DonationBox";
 
 const Organization = () => {
   const navigate = useNavigate();
@@ -85,6 +86,7 @@ const Organization = () => {
               efforts, and we're committed to fostering positive change through
               effective partnerships.
             </p>
+            <DonationBox />
           </motion.div>
 
           <motion.div

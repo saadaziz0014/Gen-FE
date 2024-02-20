@@ -7,6 +7,7 @@ import "./Volunteers.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useToast } from "@chakra-ui/react";
+import DonationBox from "../../components/DonationBox";
 
 const Volunteers = () => {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ const Volunteers = () => {
               positive change. Whether you have specific skills to share or are
               eager to learn, there's a place for you in our volunteer network.
             </p>
+            <DonationBox />
           </motion.div>
 
           <motion.div

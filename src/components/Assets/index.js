@@ -22,6 +22,7 @@ import see from "./see.png";
 import change from "./change.png";
 import remove from "./remove.png";
 import search from "./search.png";
+import donation from './donation.jpg'
 
 export {
   logo,
@@ -48,4 +49,5 @@ export {
   change,
   see,
   search,
+  donation
 };

@@ -33,6 +33,7 @@ import Request from "./pages/Benificiaries/Request";
 import Dontation from "./pages/Benificiaries/Dontation";
 import OrgRequest from "./pages/Organization/OrgRequest";
 import VolRequest from "./pages/Volunteer/VolRequest";
+import DonationBox from "./pages/Admin/DonationBox";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -213,6 +214,10 @@ const App = () => {
     {
       path: "/admin/adminDashboard",
       element: <Dashboard />,
+    },
+    {
+      path: "/admin/allDonation",
+      element: <DonationBox />
     },
     {
       path: "/admin/volunteerManagement",

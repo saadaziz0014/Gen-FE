@@ -12,6 +12,7 @@ import {
   customer,
   category,
   logout,
+  donation
 } from "../Assets/index";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -26,6 +27,11 @@ const Menubar = () => {
 
   const menuItems = [
     { name: "Dashboard", icon: dashboard, link: "/admin/adminDashboard" },
+    {
+      name: "All Donations",
+      icon: donation,
+      link: "/admin/allDonation",
+    },
     {
       name: "Organizatons Management",
       icon: user,
