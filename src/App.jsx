@@ -34,6 +34,8 @@ import Dontation from "./pages/Benificiaries/Dontation";
 import OrgRequest from "./pages/Organization/OrgRequest";
 import VolRequest from "./pages/Volunteer/VolRequest";
 import DonationBox from "./pages/Admin/DonationBox";
+import Community from "./pages/Organization/Community";
+import CommunityV from "./pages/Volunteer/CommunityV";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -178,6 +180,16 @@ const App = () => {
       )
     },
     {
+      path: "/volunteer/volunteerCommunity",
+      element: (
+        <>
+          <Volunteer_NavBar />
+          <CommunityV />
+          <Footer />
+        </>
+      )
+    },
+    {
       path: "/organization/organization",
       element: (
         <>
@@ -206,6 +218,16 @@ const App = () => {
           <Footer />
         </>
       ),
+    },
+    {
+      path: "/organization/community",
+      element: (
+        <>
+          <Organization_Navbar />
+          <Community />
+          <Footer />
+        </>
+      )
     },
     {
       path: "/adminLogin",
