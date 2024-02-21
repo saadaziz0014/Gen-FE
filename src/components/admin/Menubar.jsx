@@ -12,7 +12,7 @@ import {
   customer,
   category,
   logout,
-  donation
+  donation,
 } from "../Assets/index";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -50,7 +50,7 @@ const Menubar = () => {
     {
       name: "Community Management",
       icon: showcase,
-      link: "/showcase-management",
+      link: "/admin/communityManagement",
     },
     {
       name: "Donations Management",
@@ -87,8 +87,9 @@ const Menubar = () => {
             <Link
               key={index}
               to={item.link}
-              className={`px-4 py-3 flex items-center ${selectedItem === item ? "text-lime-500" : "hover:text-gray"
-                }`}
+              className={`px-4 py-3 flex items-center ${
+                selectedItem === item ? "text-lime-500" : "hover:text-gray"
+              }`}
               onClick={() => handleItemClick(item)}
             >
               <img src={item.icon} alt={item.name} className="h-5 w-5 mr-2" />

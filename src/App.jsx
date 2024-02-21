@@ -13,6 +13,7 @@ import Footer from "./components/footer";
 import AdminLogin from "./components/admin/AdminLogin";
 import {
   BeneficiariesManagement,
+  CommunityManagement,
   Dashboard,
   DonationsManagement,
   OrganizationsManagement,
@@ -177,7 +178,7 @@ const App = () => {
           <VolRequest />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/volunteer/volunteerCommunity",
@@ -187,7 +188,7 @@ const App = () => {
           <CommunityV />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/organization/organization",
@@ -207,7 +208,7 @@ const App = () => {
           <OrgRequest />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/organization/organizationProfile",
@@ -227,7 +228,7 @@ const App = () => {
           <Community />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/adminLogin",
@@ -239,7 +240,11 @@ const App = () => {
     },
     {
       path: "/admin/allDonation",
-      element: <DonationBox />
+      element: <DonationBox />,
+    },
+    {
+      path: "/admin/communityManagement",
+      element: <CommunityManagement />,
     },
     {
       path: "/admin/volunteerManagement",
@@ -259,11 +264,11 @@ const App = () => {
     },
     {
       path: "/admin/donationManagement",
-      element: <DonationsManagement />
+      element: <DonationsManagement />,
     },
     {
       path: "/admin/reportsManagement",
-      element: <ReportsManagement />
+      element: <ReportsManagement />,
     },
     {
       path: "*",
