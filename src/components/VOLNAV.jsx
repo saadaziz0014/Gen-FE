@@ -92,7 +92,13 @@ const Volunteer_NavBar = ({ navBar2, showCase1Page }) => {
             >
               Beneficiaries Requests
             </Link>
-
+            <Link
+              onClick={scrollToTop}
+              className="hover:text-orange-400 transition-all"
+              to="/volunteer/volunteerCommunity"
+            >
+              Communities
+            </Link>
             <Link onClick={scrollToTop} to="/volunteer/volunteerProfile">
               <button className="text-xl px-5 py-2">Profile</button>
             </Link>

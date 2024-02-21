@@ -15,8 +15,6 @@ import {
 } from '@chakra-ui/react'
 import axios from 'axios';
 import { useState } from 'react';
-
-import { FaRegEye } from "react-icons/fa6";
 import { BE } from '../constants/constants';
 import Cookies from 'js-cookie';
 

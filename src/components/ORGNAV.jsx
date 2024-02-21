@@ -88,7 +88,7 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
             <Link
               onClick={scrollToTop}
               className="hover:text-orange-400 transition-all"
-              to="#"
+              to="/organization/community"
             >
               Community Engagement
             </Link>
