@@ -12,6 +12,7 @@ import {
   FormLabel,
   FormErrorMessage,
   Select,
+  Image,
   Textarea,
   useToast
 } from "@chakra-ui/react";
@@ -20,6 +21,7 @@ import { BE } from '../constants/constants';
 import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import profileImage from '../assets/profile.jpg'
 
 export default function AboutModal(props) {
   const toast = useToast();
@@ -68,6 +70,7 @@ export default function AboutModal(props) {
           <ModalHeader>{props.user.name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            <Image src={profileImage} rotate="lg" />
             <div className="flex justify-center">
               <h1 className="text-lg font-semibold">About</h1>
             </div>

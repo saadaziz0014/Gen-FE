@@ -77,13 +77,13 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
             >
               Organizations
             </Link>
-            <Link
+            {/* <Link
               onClick={scrollToTop}
               className="hover:text-orange-400 transition-all"
               to="#"
             >
               Events
-            </Link>
+            </Link> */}
 
             <Link
               onClick={scrollToTop}
