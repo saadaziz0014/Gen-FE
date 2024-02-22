@@ -12,13 +12,14 @@ import {
   Box,
   Text,
   Stack,
-  Progress,
-  Button,
+  Image,
   Flex,
 } from "@chakra-ui/react";
 import CommunityModal from "../../components/CommunityModal";
 import CommunityRequest from "../../components/CommunityRequests";
 import EventModal from "../../components/admin/EventModal";
+import { communityOrg } from "../../components/Assets";
+import CommunityMember from "../../components/admin/CommunityMember";
 
 export default function Community() {
   const [communities, setCommunities] = useState();
@@ -27,15 +28,15 @@ export default function Community() {
     const resp = await axios.get(`${BE}community/our/${Cookies.get("id")}`);
     setCommunities(resp.data.communities);
     const respO = await axios.get(
-      `${BE}community/requestO/${Cookies.get("id")}`
+      `${BE}community/requestsO/${Cookies.get("id")}`
     );
     setRequests(respO.data.communitiesRequests);
   };
   useEffect(() => {
     fetchData();
-  }, [communities]);
+  }, [communities, requests]);
   return (
-    <div className="mt-20">
+    <div className="mt-20 bg-neutral-300 p-4">
       <div
         className="flex justify-center"
         style={{
@@ -59,12 +60,13 @@ export default function Community() {
               </CardHeader>
 
               <CardBody>
+                <Image src={communityOrg} alt="Community" borderRadius="md" />
                 <Stack divider={<StackDivider />} spacing="4">
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
                       Volunteers
                     </Heading>
-                    <Progress hasStripe value={x.value} marginTop={2} />
+                    <CommunityMember id={x._id} title={x.title} value={x.value} />
                   </Box>
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
@@ -80,7 +82,7 @@ export default function Community() {
                         <CommunityRequest id={x._id} />
                       </Heading>
                       <Heading size="xs" textTransform="uppercase">
-                        <EventModal />
+                        <EventModal id={x._id} title={x.title} />
                       </Heading>
                     </Flex>
                   </Box>
