@@ -22,8 +22,9 @@ import see from "./see.png";
 import change from "./change.png";
 import remove from "./remove.png";
 import search from "./search.png";
-import donation from './donation.png'
-import community from './community.png'
+import donation from './donation.png';
+import community from './community.png';
+import communityOrg from './communityOrg.png';
 
 export {
   logo,
@@ -45,6 +46,7 @@ export {
   content,
   customer,
   community,
+  communityOrg,
   logout,
   demouser,
   remove,
