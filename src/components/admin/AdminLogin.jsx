@@ -35,6 +35,7 @@ const AdminLogin = () => {
         },
       });
       Cookies.set("adminToken", "genserveadmin");
+      Cookies.set("role", resp.data.data.role);
       navigate("/admin/adminDashboard");
     } else {
       toast({

@@ -2,21 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
-const data = {
-  labels: ["Today", "Yesterday", "Tomorrow", "Last Month"],
-  datasets: [
-    {
-      data: [300, 50, 100, 150],
-      backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#2ECC71"],
-      hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#2ECC71"],
-    },
-  ],
-};
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const ChartCard = ({ heading, fields }) => {
   const [currentTime, setCurrentTime] = useState("");
+  const data = {
+    labels: [fields[0].name, fields[1].name, fields[2].name, fields[3].name],
+    datasets: [
+      {
+        data: [
+          fields[0].value,
+          fields[1].value,
+          fields[2].value,
+          fields[3].value,
+        ],
+        backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#2ECC71"],
+        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#2ECC71"],
+      },
+    ],
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {

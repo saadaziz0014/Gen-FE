@@ -39,7 +39,7 @@ const Navbar = ({ pagename }) => {
         </div>
         <div className="flex flex-col text-sm">
           <span className="font-medium">Genserve</span>
-          <span>Super Admin</span>
+          <span>{Cookies.get("role")}</span>
         </div>
       </div>
     </nav>

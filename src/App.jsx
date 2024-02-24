@@ -18,6 +18,7 @@ import {
   DonationsManagement,
   OrganizationsManagement,
   ReportsManagement,
+  Role,
   VolunteersManagement,
 } from "./pages/Admin";
 import ForgetPassword from "./pages/ForgetPassword";
@@ -249,6 +250,10 @@ const App = () => {
     {
       path: "/admin/volunteerManagement",
       element: <VolunteersManagement />,
+    },
+    {
+      path: "/admin/role-management",
+      element: <Role />,
     },
     {
       path: "/admin/organizationManagement",

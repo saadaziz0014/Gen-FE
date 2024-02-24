@@ -67,7 +67,7 @@ const Menubar = () => {
       icon: market,
       link: "/admin/reportsManagement",
     },
-    { name: "Permission & Role", icon: role, link: "/role-management" },
+    { name: "Permission & Role", icon: role, link: "/admin/role-management" },
     { name: "Settings", icon: settings, link: "/settings" },
   ];
 

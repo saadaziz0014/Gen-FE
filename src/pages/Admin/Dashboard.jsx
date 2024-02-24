@@ -1,13 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { reedem, service, users, revenue } from "../../components/Assets/index";
 import Menubar from "../../components/admin/Menubar";
 import MenuToggle from "../../components/admin/MenuToggle";
 import Navbar from "../../components/admin/Navbar";
 import { Card } from "@chakra-ui/react";
 import ChartCard from "../../components/admin/Chart";
+import { BE } from "../../constants/constants";
+import axios from "axios";
 
 const Dashboard = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [users, setUsers] = useState();
+  const [requests, setRequests] = useState();
+  const fetchData = async () => {
+    const resp = await axios.get(`${BE}user/totalUser`);
+    setUsers(resp.data.data);
+    const respReq = await axios.get(`${BE}user/totalRequests`);
+    setRequests(respReq.data.data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleMenuToggle = () => {
     setShowMenu(!showMenu);
@@ -62,48 +75,52 @@ const Dashboard = () => {
               />
             </div>
             <div className="flex flex-col sm:flex-row gap-2 justify-between w-full px-2 mb-4">
-              <ChartCard
-                heading="Total Active Users"
-                fields={[
-                  {
-                    name: "Today's active users",
-                    value: 300,
-                  },
-                  {
-                    name: "Yesterday's active users",
-                    value: 50,
-                  },
-                  {
-                    name: "Tomorrow's active users",
-                    value: 100,
-                  },
-                  {
-                    name: "Last Month's active users",
-                    value: 150,
-                  },
-                ]}
-              />
-              <ChartCard
-                heading="Total Active bookings"
-                fields={[
-                  {
-                    name: "Today's active bookings",
-                    value: 300,
-                  },
-                  {
-                    name: "Yesterday's active bookings",
-                    value: 50,
-                  },
-                  {
-                    name: "Tomorrow's active bookings",
-                    value: 100,
-                  },
-                  {
-                    name: "Last Month's active bookings",
-                    value: 150,
-                  },
-                ]}
-              />
+              {users && (
+                <ChartCard
+                  heading="Total Active Users"
+                  fields={[
+                    {
+                      name: "Beneficiaries",
+                      value: users.beneficiaries,
+                    },
+                    {
+                      name: "Volunteers",
+                      value: users.volunteers,
+                    },
+                    {
+                      name: "Organizations",
+                      value: users.organizations,
+                    },
+                    {
+                      name: "Admins",
+                      value: users.admins,
+                    },
+                  ]}
+                />
+              )}
+              {requests && (
+                <ChartCard
+                  heading="Total Requests"
+                  fields={[
+                    {
+                      name: "Pending Beneficiary Requests",
+                      value: requests.pendingReq,
+                    },
+                    {
+                      name: "Completed Beneficiary Requests",
+                      value: requests.nonPendingReq,
+                    },
+                    {
+                      name: "Pending Donation Requests",
+                      value: requests.pendingDon,
+                    },
+                    {
+                      name: "Completed Donation Requests",
+                      value: requests.nonPendingDon,
+                    },
+                  ]}
+                />
+              )}
             </div>
           </div>
         </div>
