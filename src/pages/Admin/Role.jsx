@@ -8,17 +8,24 @@ import { useToast } from "@chakra-ui/react";
 const Role = () => {
   const [showMenu, setShowMenu] = useState(false);
   const toast = useToast();
+  const [role, setRole] = useState({ r: "", i: -1 });
   const [users, setUsers] = useState();
 
   const fetchData = async () => {
+    setRole({ r: "", i: -1 });
     const resp = await axios.get("http://localhost:3001/user/allUsers");
     setUsers(resp.data.users);
   };
 
-  const handleBlock = async (id) => {
-    const resp = await axios.get(
-      `http://localhost:3001/user/toogleBlock/${id}`
-    );
+  const handleRole = (index, role) => {
+    setRole({ r: role, i: index });
+  };
+
+  const chnageRole = async (id, role) => {
+    const resp = await axios.post(`http://localhost:3001/user/changeRole`, {
+      id,
+      role,
+    });
     if (resp.status == 201) {
       toast({
         title: resp.data.message,
@@ -31,11 +38,12 @@ const Role = () => {
         },
       });
     }
+    fetchData();
   };
 
   useEffect(() => {
     fetchData();
-  }, [users]);
+  }, []);
 
   const handleMenuToggle = () => {
     setShowMenu(!showMenu);
@@ -53,31 +61,32 @@ const Role = () => {
       <div className="w-3/4 h-screen">
         <Navbar pagename={"Roles Management"} />
         <MenuToggle showMenu={showMenu} handleMenuToggle={handleMenuToggle} />
-        <div className="grid grid-cols-4 bg-slate-800 text-white p-2">
+        <div className="grid grid-cols-4 gap-2 bg-slate-800 text-white p-2">
           <h1>Email</h1>
           <h1>Role</h1>
           <h1>Status</h1>
           <h1>Action</h1>
         </div>
         {users &&
-          users.map((x) => (
-            <div className="grid grid-cols-4 font-normal p-2" key={x._id}>
+          users.map((x, index) => (
+            <div className="grid grid-cols-4 gap-2 font-normal p-2" key={x._id}>
               <h3>{x.email}</h3>
-              <h3>{x.role}</h3>
+              <select
+                value={role.i == index ? role.r : x.role}
+                onChange={(e) => handleRole(index, e.target.value)}
+              >
+                <option value="beneficiary">Beneficiary</option>
+                <option value="organization">Organization</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="admin">Admin</option>
+              </select>
               <h3>{x.status}</h3>
-              {x.status == "Active" ? (
+              {role.i == index && (
                 <button
-                  className="bg-red-800 text-white p-2 w-24 rounded-sm"
-                  onClick={() => handleBlock(x._id)}
+                  className="bg-blue-600 text-white p-2 w-24 rounded-sm"
+                  onClick={() => chnageRole(x._id, role.r)}
                 >
-                  Block
-                </button>
-              ) : (
-                <button
-                  className="bg-green-700 text-white p-2 w-24 rounded-sm"
-                  onClick={() => handleBlock(x._id)}
-                >
-                  Activate
+                  Update
                 </button>
               )}
             </div>

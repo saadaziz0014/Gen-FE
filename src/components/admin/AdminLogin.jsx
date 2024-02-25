@@ -25,7 +25,7 @@ const AdminLogin = () => {
     });
     if (resp.status == 201) {
       toast({
-        title: "Admin Logged In",
+        title: `${resp.data.data.role} Logged In`,
         status: "success",
         duration: 2000,
         isClosable: true,

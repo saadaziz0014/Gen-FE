@@ -22,6 +22,7 @@ const Menubar = () => {
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("adminToken");
+    Cookies.remove("role");
     navigate("/adminLogin");
   };
 
@@ -68,7 +69,7 @@ const Menubar = () => {
       link: "/admin/reportsManagement",
     },
     { name: "Permission & Role", icon: role, link: "/admin/role-management" },
-    { name: "Settings", icon: settings, link: "/settings" },
+    { name: "Settings", icon: settings, link: "/admin/settings" },
   ];
 
   const handleItemClick = (item) => {

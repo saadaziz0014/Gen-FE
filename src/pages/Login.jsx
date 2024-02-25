@@ -54,6 +54,19 @@ const Login = () => {
           },
         });
         navigate("/organization/organization");
+      } else if (resp.data.user.role == "admin") {
+        Cookies.set("adminToken", "genserveadmin");
+        toast({
+          title: `${resp.data.user.role} Logged In`,
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+          position: "top",
+          containerStyle: {
+            zIndex: 9999,
+          },
+        });
+        navigate("/admin/adminDashboard");
       }
     } else {
       toast({

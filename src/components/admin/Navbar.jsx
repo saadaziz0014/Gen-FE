@@ -10,6 +10,22 @@ const Navbar = ({ pagename }) => {
   const toast = useToast();
   useEffect(() => {
     if (
+      location.pathname == "/admin/role-management" &&
+      (Cookies.get("role") == undefined || Cookies.get("role") != "superAdmin")
+    ) {
+      toast({
+        title: `Only Super Admin Allowed`,
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+        position: "top",
+        containerStyle: {
+          zIndex: 9999,
+        },
+      });
+      navigate("/admin/adminDashboard");
+    }
+    if (
       location.pathname.startsWith("/admin") &&
       (Cookies.get("adminToken") == undefined ||
         Cookies.get("adminToken") != "genserveadmin")
