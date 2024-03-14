@@ -44,7 +44,7 @@ const Organization = () => {
           </motion.h1>
           <motion.p
             variants={animationVariants.fadeLeft}
-            className="text-xl max-lg:mx-auto max-w-md  "
+            className="text-lg max-lg:mx-auto max-w-md  "
           >
             Partner with our dynamic community of organizations that are
             committed to creating a positive impact. We are here to collaborate
@@ -75,7 +75,7 @@ const Organization = () => {
             <h2 className="text-5xl max-md:text-4xl font-bold title-font">
               How You Can Collaborate With Us
             </h2>
-            <p className="text-xl">
+            <p className="text-lg text-justify mt-2">
               Partner with our dynamic community of organizations that are
               committed to creating a positive impact. We are here to
               collaborate with you and address the needs of your organization.

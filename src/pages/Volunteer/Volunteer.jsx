@@ -44,7 +44,7 @@ const Volunteers = () => {
           </motion.h1>
           <motion.p
             variants={animationVariants.fadeLeft}
-            className="text-xl max-lg:mx-auto max-w-md  "
+            className="text-lg max-lg:mx-auto max-w-md  "
           >
             Join us in making a difference! Our mission is to engage volunteers
             in meaningful activities that address various concerns and
@@ -69,7 +69,7 @@ const Volunteers = () => {
             <h2 className="text-5xl max-md:text-4xl font-bold title-font">
               How You Can Contribute
             </h2>
-            <p className="text-xl">
+            <p className="text-lg mt-2 text-justify">
               Join our community of passionate volunteers and make a meaningful
               impact. Your dedication can help address various issues and create
               positive change. Whether you have specific skills to share or are

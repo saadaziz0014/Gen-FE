@@ -43,7 +43,7 @@ const Beneficiaries = () => {
           </motion.h1>
           <motion.p
             variants={animationVariants.fadeLeft}
-            className="text-xl max-lg:mx-auto max-w-md  "
+            className="text-lg max-lg:mx-auto max-w-md"
           >
             Connect with our caring community of volunteers who are ready to
             make a positive impact in your life. We're here to address your
@@ -72,7 +72,7 @@ const Beneficiaries = () => {
             <h2 className="text-5xl max-md:text-4xl font-bold title-font">
               How We Can Support You
             </h2>
-            <p className="text-xl">
+            <p className="text-lg text-justify mt-2">
               Connect with our caring community of volunteers who are ready to
               make a positive impact in your life. We're here to address your
               needs and create positive change. Whether you require specific
