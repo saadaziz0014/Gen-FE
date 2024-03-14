@@ -16,7 +16,9 @@ const Register = () => {
   const [errE, setErrE] = useState({ css: "hidden", message: "" });
   const [errP, setErrP] = useState({ css: "hidden", message: "" });
   const [err, setErr] = useState({ css: "hidden", message: "" });
+  const [e, setE] = useState({ css: "hidden", message: "" });
   const [cities, setCities] = useState();
+  const [submit, setSubmit] = useState();
   const navigate = useNavigate();
 
   const fetchCities = async () => {
@@ -45,6 +47,8 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setSubmit(true);
+    setE({ message: "Submitting", css: "text-green-500" });
     // const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     // const patternP = /^(?=.*[A-Z]).+$/;
     // const patternN = /^[a-zA-Z]+$/;
@@ -60,20 +64,24 @@ const Register = () => {
     // if (role == undefined) {
     //   return;
     // }
-    const resp = await axios.post(`${BE}auth/register`, {
-      email,
-      password,
-      name,
-      role,
-      location: city,
-    });
-    if (resp.status == 201) {
-      Cookies.set('id', resp.data.user._id);
-      setErr({ css: "text-red-500 m-5", message: "Registered" });
-      navigate("/otp");
-    } else {
-      setErr({ css: "text-red-500", message: resp.data.message });
+    if (submit == false) {
+      const resp = await axios.post(`${BE}auth/register`, {
+        email,
+        password,
+        name,
+        role,
+        location: city,
+      });
+      if (resp.status == 201) {
+        Cookies.set("id", resp.data.user._id);
+        setErr({ css: "text-red-500 m-5", message: "Registered" });
+        navigate("/otp");
+      } else {
+        setErr({ css: "text-red-500", message: resp.data.message });
+      }
     }
+    setSubmit(false);
+    setE({ message: "", css: "hidden" });
   };
 
   return (
@@ -212,6 +220,7 @@ const Register = () => {
                 Sign Up
               </button>
               <span className={err.css}>{err.message}</span>
+              <span className={e.css}>{e.message}</span>
               <p className="text-sm font-light text-gray-400">
                 Already have an account?{" "}
                 <Link

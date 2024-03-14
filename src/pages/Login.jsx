@@ -18,6 +18,7 @@ const Login = () => {
     if (resp.status == 201) {
       Cookies.set("role", resp.data.user.role);
       Cookies.set("id", resp.data.user._id);
+      Cookies.set("name", resp.data.user.name);
       if (resp.data.user.role == "beneficiary") {
         toast({
           title: `${resp.data.user.role} Logged In`,

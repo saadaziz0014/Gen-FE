@@ -50,10 +50,10 @@ const ServicePage = ({ id, title, breif, descr, imageSrc }) => {
           viewport={{ once: true, amount: 0 }}
           className="w-2/3 max-lg:w-full flex flex-col gap-5"
         >
-          <h1 className="text-[46px] leading-none max-md:text-4xl font-semibold">
+          <h1 className="text-3xl leading-none max-md:text-4xl font-semibold">
             Empowering communities through volunteerism
           </h1>
-          <div className="text-xl flex flex-col gap-3">
+          <div className="text-lg flex flex-col gap-3 text-justify">
             <p>
               At GEN Serve, we are dedicated to harnessing the power of
               technology and human-centered design to create a positive impact

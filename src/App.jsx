@@ -41,6 +41,7 @@ import Community from "./pages/Organization/Community";
 import CommunityV from "./pages/Volunteer/CommunityV";
 import Otp from "./pages/Otp";
 import BProfile from "./pages/Benificiaries/BProfile";
+import ServiceDetails from "./pages/ServiceDetail";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -60,6 +61,16 @@ const App = () => {
         <>
           <NavBar />
           <Services />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/Services/:id",
+      element: (
+        <>
+          <NavBar />
+          <ServiceDetails />
           <Footer />
         </>
       ),

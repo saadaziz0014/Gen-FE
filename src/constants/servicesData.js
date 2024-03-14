@@ -42,5 +42,4 @@ export const servicesData = [
     mainDescription:
       "Community building is at the core of our efforts. We aim to foster a sense of belonging and support within neighborhoods. Through various community-building programs, we create spaces where individuals can connect, share resources, and work together towards a brighter future.",
   },
-
 ];
