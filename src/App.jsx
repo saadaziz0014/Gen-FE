@@ -39,6 +39,8 @@ import VolRequest from "./pages/Volunteer/VolRequest";
 import DonationBox from "./pages/Admin/DonationBox";
 import Community from "./pages/Organization/Community";
 import CommunityV from "./pages/Volunteer/CommunityV";
+import Otp from "./pages/Otp";
+import BProfile from "./pages/Benificiaries/BProfile";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -66,7 +68,19 @@ const App = () => {
       path: "/login",
       element: (
         <>
+          <NavBar />
           <Login />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/otp",
+      element: (
+        <>
+          <NavBar />
+          <Otp />
+          <Footer />
         </>
       ),
     },
@@ -74,7 +88,9 @@ const App = () => {
       path: "/Register",
       element: (
         <>
+          <NavBar />
           <Register />
+          <Footer />
         </>
       ),
     },
@@ -147,7 +163,8 @@ const App = () => {
       element: (
         <>
           <BenNav />
-          <BeneficiaryProfile />
+          {/* <BeneficiaryProfile /> */}
+          <BProfile />
           <Footer />
         </>
       ),
