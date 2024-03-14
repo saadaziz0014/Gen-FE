@@ -64,7 +64,7 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
           style={{ maxWidth: 1200 }}
           className="flex justify-between mx-auto items-center gap-4 py-2 max-md:py-5 px-10 max-sm:px-5 font-medium"
         >
-          <Link onClick={scrollToTop} to="/organization/organization">
+          <Link onClick={scrollToTop} to="/">
             <img
               src={navBar2 ? "/GEN-Serve.png" : logo}
               className="w-10 max-lg:w-10"

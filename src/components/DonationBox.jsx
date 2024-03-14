@@ -63,7 +63,7 @@ export default function DonationBox() {
     }
     return (
         <>
-            <Button onClick={() => { onOpen(); onCloseC() }} colorScheme='orange'>Make Donation</Button>
+            <Button onClick={() => { onOpen(); onCloseC() }} backgroundColor={'#FB923C'} color='white' _hover={{ backgroundColor: '#F6B548', color: 'white' }}>Make Donation</Button>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -76,10 +76,10 @@ export default function DonationBox() {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme='orange' mr={3} onClick={onClose}>
+                        <Button variant='ghost' mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        <Button variant='ghost' onClick={handleSend}>Send</Button>
+                        <Button _hover={{ backgroundColor: '#F6B548', color: 'white' }} backgroundColor={'#FB923C'} color='white' onClick={handleSend}>Send</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
