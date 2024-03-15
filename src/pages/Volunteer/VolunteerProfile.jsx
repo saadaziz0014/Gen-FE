@@ -194,7 +194,6 @@ const VolunteerProfile = () => {
     });
   };
   useEffect(() => {
-    // document.title = "Beneficiaries-Profile - GENServe";
     fetchData();
     const patternP = /^(?=.*[A-Z]).+$/;
     const numberPattern = /^\d{10}$/;

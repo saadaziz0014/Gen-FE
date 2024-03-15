@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 // import ServicePage from "../components/service";
 import ServiceCard from "../components/serviceCard";
@@ -16,9 +15,6 @@ const Service = () => {
     if (serviceData === -1) {
       navigate("/*");
     }
-  }, []);
-  useEffect(() => {
-    document.title = `Services - ${serviceData.title} `;
   }, []);
   return (
     <>
