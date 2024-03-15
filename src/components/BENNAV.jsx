@@ -1,6 +1,7 @@
 import "./bennav.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import { CgProfile } from "react-icons/cg";
 import { scrollToTop } from "../constants/scrollToTop";
 import { useToast } from "@chakra-ui/react";
 import Cookies from "js-cookie";
@@ -104,14 +105,17 @@ const BenNav = ({ navBar2, showCase1Page }) => {
               Donation Services
             </Link>
 
-            <Link onClick={scrollToTop} to="/beneficiary/BeneficiaryProfile">
+            {/* <Link onClick={scrollToTop} to="/beneficiary/BeneficiaryProfile">
               <button className="text-xl px-5 py-2">Profile</button>
-            </Link>
+            </Link> */}
             <Link
               onClick={handleLogout}
               className="hover:text-orange-400 transition-all w-full block"
             >
               <button className="text-xl px-5 py-2">Logout</button>
+            </Link>
+            <Link onClick={scrollToTop} to="/beneficiary/BeneficiaryProfile" className="transition-all w-full block">
+              <img src="/profile-icon.png" alt="aa" />
             </Link>
           </ul>
         </nav>

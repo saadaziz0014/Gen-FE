@@ -99,18 +99,25 @@ const Volunteer_NavBar = ({ navBar2, showCase1Page }) => {
             <Link
               onClick={scrollToTop}
               className="hover:text-orange-400 transition-all"
+              to="/volunteer/beneficiaryCategoryRequests"
+            >
+              Beneficiaries Categories
+            </Link>
+            <Link
+              onClick={scrollToTop}
+              className="hover:text-orange-400 transition-all"
               to="/volunteer/volunteerCommunity"
             >
               Communities
-            </Link>
-            <Link onClick={scrollToTop} to="/volunteer/volunteerProfile">
-              <button className="text-xl px-5 py-2">Profile</button>
             </Link>
             <Link
               onClick={handleLogout}
               className="hover:text-orange-400 transition-all w-full block"
             >
               <button className="text-xl px-5 py-2">Logout</button>
+            </Link>
+            <Link onClick={scrollToTop} to="/volunteer/volunteerProfile" className="transition-all w-full block">
+              <img src="/profile-icon.png" alt="aa" />
             </Link>
           </ul>
         </nav>

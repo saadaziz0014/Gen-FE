@@ -104,15 +104,21 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
             >
               Beneficiaries Request
             </Link>
-
-            <Link onClick={scrollToTop} to="/organization/organizationProfile">
-              <button className="text-xl px-5 py-2">Profile</button>
+            <Link
+              onClick={scrollToTop}
+              className="hover:text-orange-400 transition-all"
+              to="/organization/beneficiaryCategoryRequests"
+            >
+              Beneficiaries Categories
             </Link>
             <Link
               onClick={handleLogout}
               className="hover:text-orange-400 transition-all w-full block"
             >
               <button className="text-xl px-5 py-2">Logout</button>
+            </Link>
+            <Link onClick={scrollToTop} to="/organization/organizationProfile" className="transition-all w-full block">
+              <img src="/profile-icon.png" alt="aa" />
             </Link>
           </ul>
         </nav>

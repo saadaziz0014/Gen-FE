@@ -62,27 +62,21 @@ export default function AboutModal(props) {
   }
   return (
     <>
-      <Button onClick={onOpenFirst}>About US</Button>
+      <div className="flex justify-center"><Button onClick={onOpenFirst} colorScheme="blue">About</Button></div>
 
       <Modal isOpen={isOpenFirst} onClose={onCloseFirst}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{props.user.name}</ModalHeader>
+          <ModalHeader display="flex" alignItems="center" justifyContent="space-between">
+            {props.user.name}
+            <Image src={profileImage} rotate="lg" width={28} height={28} />
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Image src={profileImage} rotate="lg" />
-            <div className="flex justify-center">
-              <h1 className="text-lg font-semibold">About</h1>
-            </div>
-            <div className="flex justify-center">
-              <p className="font-normal mt-2">{props.user.about}</p>
-            </div>
-            <div className="flex justify-center">
-              <h1 className="text-lg font-semibold">Contact</h1>
-            </div>
-            <div className="flex justify-between">
-              <h1 className="font-serif">Phone: {props.user.contact}</h1>
-              <h1 className="font-serif">Email: {props.user.email}</h1>
+            <div className="flex flex-col gap-3">
+              <p><strong>About:</strong> {props.user.about}</p>
+              <p><strong>Phone:</strong> {props.user.contact}</p>
+              <p><strong>Email:</strong> {props.user.email}</p>
             </div>
           </ModalBody>
           <ModalFooter>
