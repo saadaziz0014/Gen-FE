@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -8,8 +8,27 @@ import ReviewCard from "../components/reviewCard";
 import Carousel from "../components/carousel";
 
 import "./about.css";
+import axios from "axios";
+import { BE } from "../constants/constants";
+import { Progress } from "@chakra-ui/react";
 
 const AboutPage = () => {
+  const [cities, setCities] = useState();
+  const [userz, setUserz] = useState();
+  const fetchCities = async () => {
+    const resp = await axios.get(`${BE}users/city/loadCities`);
+    setCities(resp.data.cities);
+  };
+  const users = async (location) => {
+    console.log(location);
+    const resp = await axios.get(`${BE}users/all/${location}`);
+    setUserz(resp.data.data);
+    console.log(resp);
+  };
+  useEffect(() => {
+    fetchCities();
+    users("a");
+  }, []);
   return (
     <>
       <div className="bg-[url(/services-page-images/service-hero-bg.jpg)] bg-fixed bg-center bg-cover pt-44 pb-36 max-md:pt-36 max-md:pb-24 ">
@@ -33,7 +52,53 @@ const AboutPage = () => {
           </div>
         </motion.div>
       </div>
-
+      <div>
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          variants={animationVariants.fadeUp}
+          viewport={{ once: true, amount: 0.2 }}
+          style={{ maxWidth: 1200 }}
+          className="mx-auto  p-10 py-28  max-sm:px-5 max-md:py-16 "
+        >
+          <div>
+            <div className="flex justify-center">
+              <select
+                name="cities"
+                id=""
+                aria-placeholder="Select City"
+                className="border-4 border-slate-400 p-3"
+                onChange={(e) => users(e.target.value)}
+              >
+                {cities &&
+                  cities.map((city) => (
+                    <option value={city.name} key={city._id}>
+                      {city.name}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <div className="mt-5">
+              {userz && (
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-xl font-bold">Volunteers</h1>
+                    <Progress colorScheme="blue" value={userz.volunteers} />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-xl font-bold">Organizations</h1>
+                    <Progress colorScheme="red" value={userz.organizations} />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-xl font-bold">Beneficiaries</h1>
+                    <Progress colorScheme="green" value={userz.beneficiaries} />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
+      </div>
       {/* what we offer section start */}
       <div>
         <motion.div
@@ -50,7 +115,9 @@ const AboutPage = () => {
                 What Drives Us
               </h1>
               <Link onClick={scrollToTop} to={"/services"}>
-                <button className="text-xl px-5 py-2 mt-8 text-blue border-2 border-orange-400 text-blue-400 hover:text-white hover:bg-orange-400">Services</button>
+                <button className="text-xl px-5 py-2 mt-8 text-blue border-2 border-orange-400 text-blue-400 hover:text-white hover:bg-orange-400">
+                  Services
+                </button>
               </Link>
             </div>
             <div className="w-full">
