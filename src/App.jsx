@@ -42,6 +42,9 @@ import CommunityV from "./pages/Volunteer/CommunityV";
 import Otp from "./pages/Otp";
 import BProfile from "./pages/Benificiaries/BProfile";
 import ServiceDetails from "./pages/ServiceDetail";
+import VProfile from "./pages/Volunteer/VProfile";
+import OProfile from "./pages/Organization/OProfile";
+import CategoryRequest from "./pages/CategoryRequest";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -191,11 +194,22 @@ const App = () => {
       ),
     },
     {
+      path: "/volunteer/beneficiaryCategoryRequests",
+      element: (
+        <>
+          <Volunteer_NavBar />
+          <CategoryRequest />
+          <Footer />
+        </>
+      )
+    },
+    {
       path: "/volunteer/volunteerProfile",
       element: (
         <>
           <Volunteer_NavBar />
-          <VolunteerProfile />
+          {/* <VolunteerProfile /> */}
+          <VProfile />
           <Footer />
         </>
       ),
@@ -245,7 +259,8 @@ const App = () => {
       element: (
         <>
           <Organization_Navbar />
-          <OrganizationProfile />
+          {/* <OrganizationProfile /> */}
+          <OProfile />
           <Footer />
         </>
       ),
@@ -259,6 +274,16 @@ const App = () => {
           <Footer />
         </>
       ),
+    },
+    {
+      path: "/organization/beneficiaryCategoryRequests",
+      element: (
+        <>
+          <Organization_Navbar />
+          <CategoryRequest />
+          <Footer />
+        </>
+      )
     },
     {
       path: "/adminLogin",
