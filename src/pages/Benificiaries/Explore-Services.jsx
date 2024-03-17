@@ -24,11 +24,11 @@ const ExploreServices = () => {
     setOrg(res.data.organizations);
     const resCat = await axios.get("http://localhost:3001/category/all");
     setCat(resCat.data.categories);
-    setAll(org.concat(vol));
+    org && setAll(org.concat(vol));
   };
   useEffect(() => {
     fetchData();
-  }, [all]);
+  });
   return (
     <>
       <div className="bg-[url(/services-page-images/service-hero-bg.jpg)] bg-fixed bg-center bg-cover py-32">
