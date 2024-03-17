@@ -2,10 +2,9 @@ import { Button, Input, useToast, Select, Image } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BE } from "../../constants/constants";
-import profileImage from '../../assets/profile.jpg'
+import profileImage from "../../assets/profile.jpg";
 import Cookies from "js-cookie";
-import eyeImage from '../../assets/view.png'
-
+import eyeImage from "../../assets/view.png";
 
 const BeneficiaryProfile = () => {
   const toast = useToast();
@@ -27,7 +26,7 @@ const BeneficiaryProfile = () => {
     const resp = await axios.post(`${BE}users/about/${Cookies.get("id")}`, {
       contact,
       name,
-      location: city
+      location: city,
     });
     if (resp.status == 201) {
       toast({
@@ -154,31 +153,58 @@ const BeneficiaryProfile = () => {
     }
     if (contact && contact.length != 0 && !numberPattern.test(contact)) {
       setErrC(true);
-    }
-    else {
-      setErrC(false)
+    } else {
+      setErrC(false);
     }
   }, [data, user, contact]);
   return (
     <div className="overflow-hidden mt-28 bg-[url('/hero-bg-image.jpg')] h-[100vh] p-3 bg-top bg-no-repeat bg-cover ">
       <div className="flex justify-between mx-8" onFocus={fetchCities}>
         <Image
-          borderRadius='full'
-          boxSize='150px'
+          borderRadius="full"
+          boxSize="150px"
           src={profileImage}
-          alt='Profile'
+          alt="Profile"
         />
         <div className="flex flex-col gap-3 mt-3">
-          <Input variant="filled" w={60} size="md" color="blue" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
-          <Input variant="filled" w={60} size="md" color="blue" placeholder="contact" value={contact} onChange={(e) => setContact(e.target.value)} />
+          <Input
+            variant="filled"
+            w={60}
+            size="md"
+            color="blue"
+            placeholder="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Input
+            variant="filled"
+            w={60}
+            size="md"
+            color="blue"
+            placeholder="contact"
+            value={contact}
+            onChange={(e) => setContact(e.target.value)}
+          />
           {errC == true && (
             <p className="text-red-600 font-medium">Invalid Number</p>
           )}
-          <Select variant="filled" value={city} placeholder={city} onChange={(e) => setCity(e.target.value)} w={60} _placeholder={{ color: "blue.700" }}
-            backgroundColor="white" color="blue">
-            {cities && cities.map((city) => (
-              <option key={city._id} value={city.name}>{city.name}</option>
-            ))}
+          <Select
+            variant="filled"
+            value={city}
+            placeholder={city}
+            onChange={(e) => setCity(e.target.value)}
+            w={60}
+            _placeholder={{ color: "blue.700" }}
+            backgroundColor="white"
+            color="blue"
+          >
+            <option value="">Select</option>
+            {cities &&
+              cities.map((city) => (
+                <option key={city._id} value={city.name}>
+                  {city.name}
+                </option>
+              ))}
           </Select>
           <Button colorScheme="blue" w={60} onClick={changeAbout}>
             Change About
@@ -214,7 +240,15 @@ const BeneficiaryProfile = () => {
               value={data.oldPassword}
               onChange={handleChange}
             />
-            <Image src={eyeImage} w={5} position="absolute" left="58%" marginTop={3} onMouseDown={() => setViewOld("text")} onMouseUp={() => setViewOld("password")} />
+            <Image
+              src={eyeImage}
+              w={5}
+              position="absolute"
+              left="58%"
+              marginTop={3}
+              onMouseDown={() => setViewOld("text")}
+              onMouseUp={() => setViewOld("password")}
+            />
           </div>
           <div className="flex">
             <Input
@@ -229,10 +263,20 @@ const BeneficiaryProfile = () => {
               value={data.newPassword}
               onChange={handleChange}
             />
-            <Image src={eyeImage} w={5} position="absolute" left="58%" marginTop={3} onMouseDown={() => setViewNew("text")} onMouseUp={() => setViewNew("password")} />
+            <Image
+              src={eyeImage}
+              w={5}
+              position="absolute"
+              left="58%"
+              marginTop={3}
+              onMouseDown={() => setViewNew("text")}
+              onMouseUp={() => setViewNew("password")}
+            />
           </div>
           {err == true && (
-            <p className="text-red-600 font-medium">Atleast one capital letter</p>
+            <p className="text-red-600 font-medium">
+              Atleast one capital letter
+            </p>
           )}
           <Button colorScheme="blue" w={60} onClick={handleSubmit}>
             Change Password

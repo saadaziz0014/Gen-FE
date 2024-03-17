@@ -31,9 +31,9 @@ export default function BProfile() {
     },
   ]);
   const fetchHistory = async () => {
-    const resp = await axios.get(`${BE}request/history/${Cookies.get('id')}`);
-    setHistory(resp.data.history)
-  }
+    const resp = await axios.get(`${BE}request/history/${Cookies.get("id")}`);
+    setHistory(resp.data.history);
+  };
   const fetchData = async () => {
     const resp = await axios.get(`${BE}users/my/${Cookies.get("id")}`);
     setUser(resp.data.user);
@@ -76,7 +76,7 @@ export default function BProfile() {
       });
     } else {
       const resp = await axios.post(`${BE}auth/changePassword`, {
-        id: Cookies.get('id'),
+        id: Cookies.get("id"),
         oldPassword: data.oldPassword,
         newPassword: data.newPassword,
       });
@@ -173,9 +173,8 @@ export default function BProfile() {
     const numberPattern = /^\d{10}$/;
     if (contact && contact.length != 0 && !numberPattern.test(contact)) {
       setErrC(true);
-    }
-    else {
-      setErrC(false)
+    } else {
+      setErrC(false);
     }
   }, [data, contact]);
   return (
@@ -189,8 +188,9 @@ export default function BProfile() {
             {options &&
               options.map((opt, index) => (
                 <h1
-                  className={`${opt.selected && `border-l border-blue-700`
-                    } pl-3 cursor-pointer`}
+                  className={`${
+                    opt.selected && `border-l border-blue-700`
+                  } pl-3 cursor-pointer`}
                   onClick={() => handleChangeCompo(index)}
                   key={index}
                 >
@@ -201,7 +201,9 @@ export default function BProfile() {
         </div>
         <div className="col-span-1"></div>
         <div className="col-span-7">
-          <div className={`${options[0].selected == true ? 'block' : 'hidden'}`}>
+          <div
+            className={`${options[0].selected == true ? "block" : "hidden"}`}
+          >
             <h1 className="font-bold text-2xl mt-2">Account Settings</h1>
             <hr className="border-black mt-5" />
             <div className="flex gap-2">
@@ -213,7 +215,10 @@ export default function BProfile() {
                 >
                   Personal Information
                 </a>
-                <a href="#Password" className="inline underline ml-2 text-sky-500">
+                <a
+                  href="#Password"
+                  className="inline underline ml-2 text-sky-500"
+                >
                   Password
                 </a>
               </div>
@@ -242,6 +247,8 @@ export default function BProfile() {
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
                     >
+                      <option value="">Select</option>
+
                       {cities &&
                         cities.map((city) => (
                           <option value={city.name} key={city._id}>
@@ -312,7 +319,9 @@ export default function BProfile() {
                       onChange={handleChange}
                     />
                     {err == true && (
-                      <p className="text-red-600 font-medium">Atleast one capital letter</p>
+                      <p className="text-red-600 font-medium">
+                        Atleast one capital letter
+                      </p>
                     )}
                   </div>
                   <div className="flex justify-end">
@@ -327,18 +336,28 @@ export default function BProfile() {
               </form>
             </div>
           </div>
-          <div className={`${options[1].selected == true ? 'block' : 'hidden'}`}>
+          <div
+            className={`${options[1].selected == true ? "block" : "hidden"}`}
+          >
             <h1 className="font-bold text-2xl mt-2">Application History</h1>
             <hr className="border-black mt-5" />
             <div className="flex flex-col gap-2 my-3">
-              {history && history.map((hist) => (
-                <div className="bg-white rounded-md shadow shadow-inherit p-3" key={hist._id}>
-                  <div className="flex justify-between">
-                    <p><strong>Category:</strong> {hist.category}</p>
-                    <p><strong>Status:</strong> {hist.status}</p>
+              {history &&
+                history.map((hist) => (
+                  <div
+                    className="bg-white rounded-md shadow shadow-inherit p-3"
+                    key={hist._id}
+                  >
+                    <div className="flex justify-between">
+                      <p>
+                        <strong>Category:</strong> {hist.category}
+                      </p>
+                      <p>
+                        <strong>Status:</strong> {hist.status}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
