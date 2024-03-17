@@ -70,6 +70,7 @@ const AboutPage = () => {
                 className="border-4 border-slate-400 p-3"
                 onChange={(e) => users(e.target.value)}
               >
+                <option value="">All</option>
                 {cities &&
                   cities.map((city) => (
                     <option value={city.name} key={city._id}>

@@ -4,7 +4,7 @@ import { animationVariants } from "../../constants/animationVariants";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Input, Select, Image } from "@chakra-ui/react";
-import profileImage from '../../assets/profile.jpg'
+import profileImage from "../../assets/profile.jpg";
 
 import AboutModal from "../../components/AboutModal";
 import BCategory from "../../components/BCategory";
@@ -24,11 +24,11 @@ const ExploreServices = () => {
     setOrg(res.data.organizations);
     const resCat = await axios.get("http://localhost:3001/category/all");
     setCat(resCat.data.categories);
-    setAll(org.concat(vol))
+    setAll(org.concat(vol));
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [all]);
   return (
     <>
       <div className="bg-[url(/services-page-images/service-hero-bg.jpg)] bg-fixed bg-center bg-cover py-32">
@@ -50,7 +50,10 @@ const ExploreServices = () => {
                   width={80}
                   onChange={(e) => setOrgCat(e.target.value)}
                 >
-                  <option value="65bf50f63450b90b4ed5a608" className="text-black">
+                  <option
+                    value="65bf50f63450b90b4ed5a608"
+                    className="text-black"
+                  >
                     <h3 className="p-3">All</h3>
                   </option>
                   {cat &&
@@ -80,7 +83,7 @@ const ExploreServices = () => {
                   all.map((x) => (
                     <>
                       {x.location.includes(orgLoc) &&
-                        x.categories.includes(orgCat) ? (
+                      x.categories.includes(orgCat) ? (
                         <div
                           className="w-[100%] p-2 rounded-lg shadow-inherit bg-slate-300 border-gray-700 text-black"
                           key={x._id}
@@ -88,10 +91,10 @@ const ExploreServices = () => {
                           <div className="flex justify-between items-center mx-2 my-2">
                             <div className="flex gap-3">
                               <Image
-                                borderRadius='full'
-                                boxSize='40px'
+                                borderRadius="full"
+                                boxSize="40px"
                                 src={profileImage}
-                                alt='Profile'
+                                alt="Profile"
                               />
                               <h5 className="mb-2 text-2xl font-bold tracking-tight">
                                 {x.name}

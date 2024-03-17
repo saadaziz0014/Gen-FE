@@ -4,6 +4,7 @@ import ServiceCard from "../components/serviceCard";
 import { motion } from "framer-motion";
 import { animationVariants } from "../constants/animationVariants";
 import { servicesData } from "../constants/servicesData";
+import { useEffect } from "react";
 
 const Service = () => {
   const navigate = useNavigate();
