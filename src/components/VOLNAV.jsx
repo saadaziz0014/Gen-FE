@@ -99,6 +99,13 @@ const Volunteer_NavBar = ({ navBar2, showCase1Page }) => {
             <Link
               onClick={scrollToTop}
               className="hover:text-orange-400 transition-all"
+              to="/volunteer/beneficiaryDonations"
+            >
+              Donation Request
+            </Link>
+            <Link
+              onClick={scrollToTop}
+              className="hover:text-orange-400 transition-all"
               to="/volunteer/beneficiaryCategoryRequests"
             >
               Beneficiaries Categories

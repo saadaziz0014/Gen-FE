@@ -13,6 +13,7 @@ import {
   category,
   logout,
   donation,
+  donationBen,
 } from "../Assets/index";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -54,6 +55,11 @@ const Menubar = () => {
       link: "/admin/communityManagement",
     },
     {
+      name: "Beneficiaries Donations Request",
+      icon: donationBen,
+      link: "/admin/donationBenReq"
+    },
+    {
       name: "Donations Management",
       icon: home,
       link: "/admin/donationManagement",
@@ -88,9 +94,8 @@ const Menubar = () => {
             <Link
               key={index}
               to={item.link}
-              className={`px-4 py-3 flex items-center ${
-                selectedItem === item ? "text-lime-500" : "hover:text-gray"
-              }`}
+              className={`px-4 py-3 flex items-center ${selectedItem === item ? "text-lime-500" : "hover:text-gray"
+                }`}
               onClick={() => handleItemClick(item)}
             >
               <img src={item.icon} alt={item.name} className="h-5 w-5 mr-2" />

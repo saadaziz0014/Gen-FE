@@ -31,6 +31,9 @@ export default function AboutModal(props) {
   const [category, setCategory] = useState();
   const [message, setMessage] = useState();
   const [err, setErr] = useState(false);
+  const handleDonation = () => {
+    navigate(`/beneficiary/donationBen/${props.user._id}`)
+  }
   const handleRequest = async () => {
     if (message == undefined || category == undefined) {
       setErr(true);
@@ -80,7 +83,8 @@ export default function AboutModal(props) {
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={() => { onCloseFirst(); onOpenSecond() }} colorScheme='blue'>Request</Button>
+            <Button colorScheme='green' onClick={handleDonation} mr={3}>Donation Request</Button>
+            <Button onClick={() => { onCloseFirst(); onOpenSecond() }} colorScheme='blue'>Service Request</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -97,7 +101,7 @@ export default function AboutModal(props) {
             <FormControl className="flex flex-col gap-2" isInvalid={err}>
               <FormLabel>Category</FormLabel>
               <Select placeholder='Select Catgeory' value={category} onChange={(e) => { setCategory(e.target.value); setErr(false) }}>
-                <option value="donation">Donation</option>
+                <option value="">Select</option>
                 {props.user.cats.map((cat, index) => (
                   <option key={index} value={cat}>{cat}</option>
                 ))}

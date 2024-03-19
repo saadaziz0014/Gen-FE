@@ -78,17 +78,6 @@ const NavBar = () => {
                   ? "bg-orange-300 p-2 text-white"
                   : "hover:text-orange-400 transition-all";
               }}
-              to="/Login"
-            >
-              Login
-            </NavLink>
-            <NavLink
-              onClick={scrollToTop}
-              className={({ isActive }) => {
-                return isActive
-                  ? "bg-orange-300 p-2 text-white"
-                  : "hover:text-orange-400 transition-all";
-              }}
               to="/about"
             >
               About
@@ -103,6 +92,17 @@ const NavBar = () => {
               }}
             >
               Contact US
+            </NavLink>
+            <NavLink
+              onClick={scrollToTop}
+              className={({ isActive }) => {
+                return isActive
+                  ? "bg-orange-300 p-2 text-white"
+                  : "hover:text-orange-400 transition-all";
+              }}
+              to="/Login"
+            >
+              Login
             </NavLink>
           </ul>
         </nav>

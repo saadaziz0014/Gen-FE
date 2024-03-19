@@ -25,6 +25,7 @@ import search from "./search.png";
 import donation from './donation.png';
 import community from './community.png';
 import communityOrg from './communityOrg.png';
+import donationBen from './donationBen.png'
 
 export {
   logo,
@@ -53,5 +54,6 @@ export {
   change,
   see,
   search,
-  donation
+  donation,
+  donationBen
 };
