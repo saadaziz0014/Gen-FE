@@ -45,6 +45,9 @@ import ServiceDetails from "./pages/ServiceDetail";
 import VProfile from "./pages/Volunteer/VProfile";
 import OProfile from "./pages/Organization/OProfile";
 import CategoryRequest from "./pages/CategoryRequest";
+import DonationBen from "./pages/Benificiaries/DonationBen";
+import DonationBenReq from "./pages/Admin/DonationBenReq";
+import DonationReq from "./pages/Volunteer/DonationReq";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -143,6 +146,16 @@ const App = () => {
       ),
     },
     {
+      path: "/beneficiary/donationBen/:id",
+      element: (
+        <>
+          <BenNav />
+          <DonationBen />
+          <Footer />
+        </>
+      ),
+    },
+    {
       path: "/beneficiary/beneficiaryExplore",
       element: (
         <>
@@ -235,6 +248,16 @@ const App = () => {
       ),
     },
     {
+      path: "/volunteer/beneficiaryDonations",
+      element: (
+        <>
+          <Volunteer_NavBar />
+          <DonationReq />
+          <Footer />
+        </>
+      )
+    },
+    {
       path: "/organization/organization",
       element: (
         <>
@@ -286,6 +309,16 @@ const App = () => {
       )
     },
     {
+      path: "/organization/beneficiaryDonations",
+      element: (
+        <>
+          <Organization_Navbar />
+          <DonationReq />
+          <Footer />
+        </>
+      )
+    },
+    {
       path: "/adminLogin",
       element: <AdminLogin />,
     },
@@ -328,6 +361,10 @@ const App = () => {
     {
       path: "/admin/reportsManagement",
       element: <ReportsManagement />,
+    },
+    {
+      path: "/admin/donationBenReq",
+      element: <DonationBenReq />
     },
     {
       path: "/admin/settings",
