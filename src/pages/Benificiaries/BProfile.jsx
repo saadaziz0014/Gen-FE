@@ -15,6 +15,8 @@ export default function BProfile() {
   const [history, setHistory] = useState();
   const [errC, setErrC] = useState(false);
   const [name, setName] = useState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [data, setData] = useState({
     oldPassword: "",
     newPassword: "",
@@ -38,9 +40,11 @@ export default function BProfile() {
     const resp = await axios.get(`${BE}users/my/${Cookies.get("id")}`);
     setUser(resp.data.user);
     contact == undefined && setContact(resp.data.user.contact);
-    setName(resp.data.user.name);
-    setCity(resp.data.user.location);
-    setAbout(resp.data.user.about);
+    name == undefined && setName(resp.data.user.name);
+    location == undefined && setCity(resp.data.user.location);
+    about == undefined && setAbout(resp.data.user.about);
+    firstName == undefined && setFirstName(resp.data.user.firstName);
+    lastName == undefined && setLastName(resp.data.user.lastName);
   };
   const handleChange = (e) => {
     let name = e.target.name;
@@ -116,6 +120,8 @@ export default function BProfile() {
       name,
       location: city,
       about,
+      firstName,
+      lastName
     });
     if (resp.status == 201) {
       toast({
@@ -188,9 +194,8 @@ export default function BProfile() {
             {options &&
               options.map((opt, index) => (
                 <h1
-                  className={`${
-                    opt.selected && `border-l border-blue-700`
-                  } pl-3 cursor-pointer`}
+                  className={`${opt.selected && `border-l border-blue-700`
+                    } pl-3 cursor-pointer`}
                   onClick={() => handleChangeCompo(index)}
                   key={index}
                 >
@@ -228,7 +233,27 @@ export default function BProfile() {
               <form action="" method="post" onSubmit={changeAbout}>
                 <div className="flex flex-col gap-2 mt-2">
                   <div className="flex flex-col gap-1">
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="fname">First Name</label>
+                    <input
+                      type="text"
+                      placeholder="First Name"
+                      value={firstName}
+                      onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setFirstName(e.target.value) }}
+                      className="border p-1"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="fname">Last Name</label>
+                    <input
+                      type="text"
+                      placeholder="Last Name"
+                      value={lastName}
+                      onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setLastName(e.target.value) }}
+                      className="border p-1"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="name">Username</label>
                     <input
                       type="text"
                       placeholder="Name"

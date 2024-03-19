@@ -77,35 +77,38 @@ const ExploreServices = () => {
                 <BCategory />
               </div>
             </div>
-            <div className="">
-              <div className="flex flex-col gap-4">
-                {all &&
-                  all.map((x) => (
-                    <>
-                      {x.location.includes(orgLoc) &&
+            <div className="sm:grid sm:grid-cols-3 sm:gap-2 ml-2">
+              {all &&
+                all.map((x) => (
+                  <>
+                    {x.location.includes(orgLoc) &&
                       x.categories.includes(orgCat) ? (
-                        <div
-                          className="w-[100%] p-2 rounded-lg shadow-inherit bg-slate-300 border-gray-700 text-black"
-                          key={x._id}
-                        >
-                          <div className="flex justify-between items-center mx-2 my-2">
-                            <div className="flex gap-3">
-                              <Image
-                                borderRadius="full"
-                                boxSize="40px"
-                                src={profileImage}
-                                alt="Profile"
-                              />
-                              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                                {x.name}
-                              </h5>
-                            </div>
-                            <h5 className="mb-2 text-xl font-semibold">
+                      <div
+                        className="w-80 rounded-lg shadow-inherit bg-slate-300 border-gray-700 border-2 shadow-lg text-black"
+                        key={x._id}
+                      >
+                        <div className="p-3">
+                          <div className="flex justify-between">
+                            <Image
+                              borderRadius="full"
+                              boxSize="40px"
+                              src={profileImage}
+                              alt="Profile"
+                            />
+                            <h5 className="text-2xl font-bold tracking-tight">
+                              {x.firstName}
+                            </h5>
+                          </div>
+                          <div className="flex justify-center my-3">
+                            <h5 className="text-xl font-semibold">
                               {x.role.toUpperCase()}
                             </h5>
+                          </div>
+                          <div className="flex justify-end">
                             <AboutModal user={x} />
                           </div>
-                          {/* <svg
+                        </div>
+                        {/* <svg
                           className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
                           aria-hidden="true"
                           xmlns="http://www.w3.org/2000/svg"
@@ -120,11 +123,10 @@ const ExploreServices = () => {
                             d="M1 5h12m0 0L9 1m4 4L9 9"
                           />
                         </svg> */}
-                        </div>
-                      ) : null}
-                    </>
-                  ))}
-              </div>
+                      </div>
+                    ) : null}
+                  </>
+                ))}
             </div>
           </div>
         </motion.div>

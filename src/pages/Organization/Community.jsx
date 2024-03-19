@@ -60,8 +60,10 @@ export default function Community() {
               </CardHeader>
 
               <CardBody>
-                <Image src={communityOrg} alt="Community" borderRadius="md" width={52} height={52} />
-                <Stack divider={<StackDivider />} spacing="4">
+                <Flex justifyContent="center">
+                  <Image src={communityOrg} alt="Community" borderRadius="md" objectFit="contain" width={24} height={24} />
+                </Flex>
+                <Stack divider={<StackDivider />} spacing="2">
                   <Box marginTop={5}>
                     <Heading size="xs" textTransform="uppercase">
                       Volunteers
@@ -91,6 +93,6 @@ export default function Community() {
             </Card>
           ))}
       </div>
-    </div>
+    </div >
   );
 }

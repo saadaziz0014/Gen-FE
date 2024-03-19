@@ -38,7 +38,7 @@ const Service = () => {
       </div>
       <div
         style={{ maxWidth: 1200 }}
-        className="mx-auto grid grid-cols-2 max-md:grid-rows-6 max-md:grid-cols-1 grid-rows-3 p-10 max-lg:px-5 gap-5 my-5"
+        className="sm:grid sm:grid-cols-2 sm:ml-8 sm:my-4 sm:gap-2"
       >
         {servicesData.map((e, i) => {
           return (

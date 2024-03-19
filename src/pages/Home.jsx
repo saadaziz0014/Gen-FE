@@ -31,7 +31,7 @@ const HomePage = () => {
           </motion.h1>
           <motion.p
             variants={animationVariants.fadeLeft}
-            className="text-xl max-lg:mx-auto max-w-md  "
+            className="text-xl max-lg:mx-auto max-w-md"
           >
             Empowering communities through spaces that foster collaboration and
             growth.
@@ -96,7 +96,7 @@ const HomePage = () => {
               variants={animationVariants.fadeRight}
               viewport={{ once: true, amount: 0.2 }}
             >
-              <p className="text-xl">
+              <p className="text-xl text-justify">
                 Welcome to our community! We believe in creating a positive
                 impact by fostering connections and empowering individuals. Our
                 mission is to provide a supportive environment where people can
@@ -125,7 +125,7 @@ const HomePage = () => {
             <h2 className="text-5xl max-md:text-4xl font-bold title-font">
               Our community Initiatives
             </h2>
-            <p className="text-xl">
+            <p className="text-xl text-justify">
               Welcome to our Community aid and Volunteer Platform! We are
               dedicated to making a positive impact by providing support and
               assisstance to Beneficiaries.

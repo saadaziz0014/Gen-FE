@@ -10,7 +10,9 @@ const Register = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [city, setCity] = useState("ND");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [city, setCity] = useState("Abbotabad");
   const [role, setRole] = useState("beneficiary");
   const [errN, setErrN] = useState({ css: "hidden", message: "" });
   const [errE, setErrE] = useState({ css: "hidden", message: "" });
@@ -69,6 +71,8 @@ const Register = () => {
         email,
         password,
         name,
+        firstName,
+        lastName,
         role,
         location: city,
       });
@@ -85,7 +89,7 @@ const Register = () => {
   };
 
   return (
-    <section className="bg-[#FFFFFF] mt-36 mb-20">
+    <section className="bg-[#FFFFFF] mt-60 mb-36">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="w-full  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -98,6 +102,42 @@ const Register = () => {
               onSubmit={handleSubmit}
               onFocus={fetchCities}
             >
+              <div>
+                <label
+                  htmlFor="firstName"
+                  className="block mb-2 text-sm font-medium text-white"
+                >
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  value={firstName}
+                  onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setFirstName(e.target.value) }}
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="lastName"
+                  className="block mb-2 text-sm font-medium text-white"
+                >
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  value={lastName}
+                  onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setLastName(e.target.value) }}
+                  placeholder="Last Name"
+                  required
+                />
+              </div>
               <div>
                 <label
                   htmlFor="email"
@@ -189,6 +229,12 @@ const Register = () => {
                 <span className={errP.css}>{errP.message}</span>
               </div>
               <div>
+                <label
+                  htmlFor="city"
+                  className="block mb-2 text-sm font-medium text-white"
+                >
+                  City
+                </label>
                 <select
                   onChange={(e) => setCity(e.target.value)}
                   className=" border 
