@@ -67,7 +67,7 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
           <Link onClick={scrollToTop} to="/">
             <img
               src={navBar2 ? "/GEN-Serve.png" : logo}
-              className="w-10 max-lg:w-10"
+              className="w-32 max-lg:w-10"
               alt="Homyz-logo"
             />
           </Link>
