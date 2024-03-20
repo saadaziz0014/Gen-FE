@@ -41,7 +41,7 @@ const NavBar = () => {
           <NavLink onClick={scrollToTop} to="/">
             <img
               src="/GEN-Serve.png"
-              className="w-20 max-lg:w-10"
+              className="w-32 max-lg:w-10"
               alt="GEN-Serve"
             />
           </NavLink>
