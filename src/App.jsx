@@ -48,6 +48,7 @@ import CategoryRequest from "./pages/CategoryRequest";
 import DonationBen from "./pages/Benificiaries/DonationBen";
 import DonationBenReq from "./pages/Admin/DonationBenReq";
 import DonationReq from "./pages/Volunteer/DonationReq";
+import ReqDontation from "./pages/Benificiaries/ReqDonation";
 
 const App = () => {
   const routers = createBrowserRouter([
@@ -184,6 +185,16 @@ const App = () => {
           <Footer />
         </>
       ),
+    },
+    {
+      path: "/beneficiary/donationReqBen",
+      element: (
+        <>
+          <BenNav />
+          <ReqDontation />
+          <Footer />
+        </>
+      )
     },
     {
       path: "/beneficiary/BeneficiaryProfile",
