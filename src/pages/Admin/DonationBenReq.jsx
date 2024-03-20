@@ -24,6 +24,10 @@ const DonationBenReq = () => {
         const resp = await axios.get(`${BE}adminDonation/makeVerify/${id}`);
     }
 
+    const payment = async (id) => {
+        const resp = await axios.get(`${BE}adminDonation/sendAmount/${id}`);
+    }
+
     useEffect(() => {
         allDonations()
     }, [donations])
@@ -49,7 +53,7 @@ const DonationBenReq = () => {
                 <div className="grid grid-cols-6 bg-slate-800 text-white p-2">
                     <h1>Beneficiary</h1>
                     <h1>Title</h1>
-                    <h1>Amount Required</h1>
+                    <h1>Amount</h1>
                     <h1>Benefactor</h1>
                     <h1>View</h1>
                     <h1>Action</h1>
@@ -61,10 +65,11 @@ const DonationBenReq = () => {
                                 <div className="grid grid-cols-6 font-normal p-2" key={x._id}>
                                     <h3>{x.beneficiary.name}</h3>
                                     <h3>{x.title}</h3>
-                                    <h3>{x.amount}</h3>
+                                    {x.status == "PaymentDone" ? <h3>{x.amountReceived}</h3> : <h3>{x.amount}</h3>}
                                     <h3>{x.benefactor.name}</h3>
                                     <ViewBenReq donation={x} />
                                     {x.status == "Initial" && <Button colorScheme="green" width={20} onClick={() => verify(x._id)}>Verify</Button>}
+                                    {x.status == "PaymentDone" && <Button colorScheme="blue" width={32} onClick={() => payment(x._id)}>Send Payment</Button>}
                                 </div>
                             )}
                         </>
