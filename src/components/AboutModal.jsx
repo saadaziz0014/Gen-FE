@@ -30,11 +30,13 @@ export default function AboutModal(props) {
   const { isOpen: isOpenSecond, onOpen: onOpenSecond, onClose: onCloseSecond } = useDisclosure();
   const [category, setCategory] = useState();
   const [message, setMessage] = useState();
+  const [show, setShow] = useState("");
   const [err, setErr] = useState(false);
   const handleDonation = () => {
     navigate(`/beneficiary/donationBen/${props.user._id}`)
   }
   const handleRequest = async () => {
+    setShow("Submitting")
     if (message == undefined || category == undefined) {
       setErr(true);
       return;
@@ -46,6 +48,7 @@ export default function AboutModal(props) {
       message,
       category
     });
+    setShow("");
     if (resp.status == 201) {
       toast({
         title: resp.data.message,
@@ -59,7 +62,7 @@ export default function AboutModal(props) {
       });
       setCategory(undefined);
       setMessage(undefined);
-      onCloseSecond();
+      // onCloseSecond();
       navigate("/beneficiary/beneficiaryRequest")
     }
   }
@@ -110,6 +113,7 @@ export default function AboutModal(props) {
               <Textarea placeholder='Your Message' value={message} onChange={(e) => { setMessage(e.target.value); setErr(false) }} />
               {err == true ? <FormErrorMessage>Enter all Fields</FormErrorMessage> : null}
             </FormControl>
+            <span className="text-blue-500">{show}</span>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={handleRequest}>

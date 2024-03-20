@@ -96,13 +96,20 @@ const BenNav = ({ navBar2, showCase1Page }) => {
             >
               Request Services
             </Link>
+            <Link
+              onClick={scrollToTop}
+              className="hover:text-orange-400 transition-all"
+              to="/beneficiary/donationReqBen"
+            >
+              Donation Services
+            </Link>
 
             <Link
               onClick={scrollToTop}
               className="hover:text-orange-400 transition-all"
               to="/beneficiary/beneficiaryDonation"
             >
-              Donation Services
+              Donation Requests
             </Link>
 
             {/* <Link onClick={scrollToTop} to="/beneficiary/BeneficiaryProfile">

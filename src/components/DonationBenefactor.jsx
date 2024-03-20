@@ -40,7 +40,7 @@ export default function DonationBenefactor({ donation }) {
         onOpenC();
     }
     const send = async () => {
-        const resp = await axios.post(`${BE}adminDonation/addAmount/${donation._id}`, {
+        const resp = await axios.post(`${BE}request/sendDonation/${donation._id}`, {
             amount
         })
         if (resp.status == 201) {
