@@ -5,30 +5,40 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Input, Select, Image } from "@chakra-ui/react";
 import profileImage from "../../assets/profile.jpg";
-
 import AboutModal from "../../components/AboutModal";
 import BCategory from "../../components/BCategory";
+import ReactStars from "react-rating-stars-component";
+import { BE } from "../../constants/constants";
+import { FaStar } from "react-icons/fa";
+import Cookies from "js-cookie";
+
+
 const ExploreServices = () => {
-  const [org, setOrg] = useState();
-  const [vol, setVol] = useState();
   const [orgLoc, setOrgLoc] = useState("");
   const [orgCat, setOrgCat] = useState("65bf50f63450b90b4ed5a608");
   const [cat, setCat] = useState();
-  const [volCat, setVolCat] = useState("65bf50f63450b90b4ed5a608");
-  const [volLoc, setVolLoc] = useState("");
   const [all, setAll] = useState();
   const fetchData = async () => {
-    const resp = await axios.get("http://localhost:3001/user/allVolunteersU");
-    setVol(resp.data.volunteers);
-    const res = await axios.get("http://localhost:3001/user/allOrganizationsU");
-    setOrg(res.data.organizations);
-    const resCat = await axios.get("http://localhost:3001/category/all");
+    // const resp = await axios.get("http://localhost:3001/user/allVolunteersU");
+    // setVol(resp.data.volunteers);
+    // const res = await axios.get("http://localhost:3001/user/allOrganizationsU");
+    // setOrg(res.data.organizations);
+    const resCat = await axios.get(`${BE}category/all`);
     setCat(resCat.data.categories);
-    org && setAll(org.concat(vol));
+    // org && setAll(org.concat(vol));
+    const resp = await axios.get(`${BE}user/allServices`);
+    setAll(resp.data.all);
   };
+  const handleRating = async (rate, id) => {
+    const resp = await axios.post(`${BE}users/addRating/${id}`, {
+      rating: rate,
+      userId: Cookies.get('id')
+    })
+    console.log(resp)
+  }
   useEffect(() => {
     fetchData();
-  });
+  }, []);
   return (
     <>
       <div className="bg-[url(/services-page-images/service-hero-bg.jpg)] bg-fixed bg-center bg-cover py-32">
@@ -80,12 +90,11 @@ const ExploreServices = () => {
             <div className="sm:grid sm:grid-cols-3 sm:gap-2 ml-2">
               {all &&
                 all.map((x) => (
-                  <>
+                  <div key={x._id}>
                     {x.location.includes(orgLoc) &&
                       x.categories.includes(orgCat) ? (
                       <div
                         className="w-80 rounded-lg shadow-inherit bg-slate-300 border-gray-700 border-2 shadow-lg text-black"
-                        key={x._id}
                       >
                         <div className="p-3">
                           <div className="flex justify-between">
@@ -99,12 +108,13 @@ const ExploreServices = () => {
                               {x.firstName}
                             </h5>
                           </div>
-                          <div className="flex justify-center my-3">
+                          <div className="flex gap-5 items-center my-3">
                             <h5 className="text-xl font-semibold">
                               {x.role.toUpperCase()}
                             </h5>
                           </div>
-                          <div className="flex justify-end">
+                          <div className="flex items-center justify-between">
+                            <ReactStars count={5} value={x.ratings} onChange={(newRating) => handleRating(newRating, x._id)} size={24} activeColor="#ffd700" />
                             <AboutModal user={x} />
                           </div>
                         </div>
@@ -125,7 +135,7 @@ const ExploreServices = () => {
                         </svg> */}
                       </div>
                     ) : null}
-                  </>
+                  </div>
                 ))}
             </div>
           </div>
