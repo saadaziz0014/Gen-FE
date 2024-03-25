@@ -115,7 +115,11 @@ const Register = () => {
                   id="firstName"
                   className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                   value={firstName}
-                  onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setFirstName(e.target.value) }}
+                  onChange={(e) => {
+                    const patternN = /^[A-Za-z]+$/;
+                    patternN.test(e.target.value) &&
+                      setFirstName(e.target.value);
+                  }}
                   placeholder="First Name"
                   required
                 />
@@ -133,7 +137,11 @@ const Register = () => {
                   id="lastName"
                   className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
                   value={lastName}
-                  onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setLastName(e.target.value) }}
+                  onChange={(e) => {
+                    const patternN = /^[A-Za-z]+$/;
+                    patternN.test(e.target.value) &&
+                      setLastName(e.target.value);
+                  }}
                   placeholder="Last Name"
                   required
                 />
@@ -262,7 +270,7 @@ const Register = () => {
               </div>
               <button
                 type="submit"
-                className="w-full text-white  focus:ring-4 focus:outline-none bg-blue-400  font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-blue-600 focus:ring-primary-800"
+                className="w-full text-white  focus:ring-4 focus:outline-none bg-[#FDBA74]  font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-orange-500 focus:ring-primary-800"
               >
                 Sign Up
               </button>

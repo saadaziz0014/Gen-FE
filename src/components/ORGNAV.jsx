@@ -36,8 +36,7 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
     };
     if (
       !Cookies.get("role") ||
-      Cookies.get("role") != "organization" &&
-      Cookies.get("role") != "admin"
+      (Cookies.get("role") != "organization" && Cookies.get("role") != "admin")
     ) {
       toast({
         title: "Only Organozation Allowed",
@@ -62,7 +61,7 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
       >
         <nav
           style={{ maxWidth: 1200 }}
-          className="flex justify-between mx-auto items-center gap-4 py-2 max-md:py-5 px-10 max-sm:px-5 font-medium"
+          className="flex justify-between mx-auto items-center gap-2 py-2 max-md:py-5 px-5 max-sm:px-5 font-medium"
         >
           <Link onClick={scrollToTop} to="/">
             <img
@@ -124,7 +123,11 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
             >
               <button className="text-xl px-5 py-2">Logout</button>
             </Link>
-            <Link onClick={scrollToTop} to="/organization/organizationProfile" className="transition-all w-full block">
+            <Link
+              onClick={scrollToTop}
+              to="/organization/organizationProfile"
+              className="transition-all w-full block"
+            >
               <img src="/profile-icon.png" alt="aa" />
             </Link>
           </ul>
@@ -137,14 +140,16 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
           setViewSideNav(!viewSideNav);
         }}
         style={{ zIndex: 99 }}
-        className={`fixed ${viewSideNav ? "translate-x-0" : "-translate-x-full"
-          } top-0 left-0 bottom-0 right-0  bg-black/40`}
+        className={`fixed ${
+          viewSideNav ? "translate-x-0" : "-translate-x-full"
+        } top-0 left-0 bottom-0 right-0  bg-black/40`}
       ></div>
       <nav
         style={{ zIndex: 100 }}
         // style={{ height: 8000 }}
-        className={`fixed top-0 bottom-0 hidden max-lg:block ${viewSideNav ? "translate-x-0" : "-translate-x-full"
-          } bg-white  text-black left-0 w-96 p-5 px-10 max-sm:px-5 max-sm:w-80 z-30 transition-all font-medium`}
+        className={`fixed top-0 bottom-0 hidden max-lg:block ${
+          viewSideNav ? "translate-x-0" : "-translate-x-full"
+        } bg-white  text-black left-0 w-96 p-5 px-10 max-sm:px-5 max-sm:w-80 z-30 transition-all font-medium`}
       >
         <div id="header" className="flex justify-between items-center">
           <img className="w-36" src="/GEN-Serve.png" alt="GEN-Serve" />
@@ -190,8 +195,9 @@ const Organization_Navbar = ({ navBar2, showCase1Page }) => {
           </Link> */}
           <div className="relative">
             <div
-              className={`${showcaseDropDown ? "top-[114px]" : "top-[41px]"
-                } transition-all duration-200 absolute  w-full bg-white h-24`}
+              className={`${
+                showcaseDropDown ? "top-[114px]" : "top-[41px]"
+              } transition-all duration-200 absolute  w-full bg-white h-24`}
             >
               <Link
                 onClick={() => {

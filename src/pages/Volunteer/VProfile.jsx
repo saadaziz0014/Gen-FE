@@ -12,6 +12,7 @@ export default function VProfile() {
   const [category, setCategory] = useState();
   const [city, setCity] = useState();
   const [cats, setCats] = useState();
+  const [dialer, setDialer] = useState();
   const [history, setHistory] = useState();
   const [about, setAbout] = useState();
   const [contact, setContact] = useState();
@@ -37,6 +38,10 @@ export default function VProfile() {
   const fetchHistory = async () => {
     const resp = await axios.get(`${BE}request/historyR/${Cookies.get("id")}`);
     setHistory(resp.data.history);
+  };
+  const fetchDialer = async () => {
+    const resp = await axios.get(`${BE}users/dialer/load`);
+    setDialer(resp.data.dialers);
   };
   const fetchData = async () => {
     const resp = await axios.get(`${BE}users/my/${Cookies.get("id")}`);
@@ -134,7 +139,7 @@ export default function VProfile() {
       location: city,
       about,
       firstName,
-      lastName
+      lastName,
     });
     if (resp.status == 201) {
       toast({
@@ -183,6 +188,7 @@ export default function VProfile() {
     fetchData();
     fetchCities();
     fetchHistory();
+    fetchDialer();
     const patternP = /^(?=.*[A-Z]).+$/;
     if (data.newPassword.length != 0 && !patternP.test(data.newPassword)) {
       setErr(true);
@@ -207,8 +213,9 @@ export default function VProfile() {
             {options &&
               options.map((opt, index) => (
                 <h1
-                  className={`${opt.selected && `border-l border-blue-700`
-                    } pl-3 cursor-pointer`}
+                  className={`${
+                    opt.selected && `border-l border-blue-700`
+                  } pl-3 cursor-pointer`}
                   onClick={() => handleChangeCompo(index)}
                   key={index}
                 >
@@ -257,7 +264,11 @@ export default function VProfile() {
                       type="text"
                       placeholder="First Name"
                       value={firstName}
-                      onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setFirstName(e.target.value) }}
+                      onChange={(e) => {
+                        const patternN = /^[A-Za-z]+$/;
+                        patternN.test(e.target.value) &&
+                          setFirstName(e.target.value);
+                      }}
                       className="border p-1"
                     />
                   </div>
@@ -267,7 +278,11 @@ export default function VProfile() {
                       type="text"
                       placeholder="Last Name"
                       value={lastName}
-                      onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setLastName(e.target.value) }}
+                      onChange={(e) => {
+                        const patternN = /^[A-Za-z]+$/;
+                        patternN.test(e.target.value) &&
+                          setLastName(e.target.value);
+                      }}
                       className="border p-1"
                     />
                   </div>
@@ -303,13 +318,23 @@ export default function VProfile() {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label htmlFor="contact">Contact</label>
-                    <input
-                      type="text"
-                      placeholder="Contact"
-                      className="border p-1"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                    />
+                    <div className="flex">
+                      <select name="" id="">
+                        {dialer &&
+                          dialer.map((dialer) => (
+                            <option value={dialer.dial_code} key={dialer._id}>
+                              {dialer.dial_code}
+                            </option>
+                          ))}
+                      </select>
+                      <input
+                        type="text"
+                        placeholder="Contact"
+                        className="border p-1"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
+                      />
+                    </div>
                     {errC == true && (
                       <p className="text-red-600 font-medium">Invalid Number</p>
                     )}

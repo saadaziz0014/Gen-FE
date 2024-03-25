@@ -12,7 +12,6 @@ import { BE } from "../../constants/constants";
 import { FaStar } from "react-icons/fa";
 import Cookies from "js-cookie";
 
-
 const ExploreServices = () => {
   const [orgLoc, setOrgLoc] = useState("");
   const [orgCat, setOrgCat] = useState("65bf50f63450b90b4ed5a608");
@@ -32,10 +31,10 @@ const ExploreServices = () => {
   const handleRating = async (rate, id) => {
     const resp = await axios.post(`${BE}users/addRating/${id}`, {
       rating: rate,
-      userId: Cookies.get('id')
-    })
-    console.log(resp)
-  }
+      userId: Cookies.get("id"),
+    });
+    console.log(resp);
+  };
   useEffect(() => {
     fetchData();
   }, []);
@@ -52,7 +51,7 @@ const ExploreServices = () => {
         >
           <div className="text-white flex flex-col gap-8 max-md:items-center max-md:text-center">
             <h1 className="text-5xl font-bold"> Explore Services</h1>
-            <div className="flex items-center gap-32">
+            <div className="flex items-center gap-24">
               <div>
                 <Select
                   variant="flushed"
@@ -87,15 +86,13 @@ const ExploreServices = () => {
                 <BCategory />
               </div>
             </div>
-            <div className="sm:grid sm:grid-cols-3 sm:gap-2 ml-2">
+            <div className="sm:grid sm:grid-cols-3 sm:gap-2 gap-2 ml-2">
               {all &&
                 all.map((x) => (
                   <div key={x._id}>
                     {x.location.includes(orgLoc) &&
-                      x.categories.includes(orgCat) ? (
-                      <div
-                        className="w-80 rounded-lg shadow-inherit bg-slate-300 border-gray-700 border-2 shadow-lg text-black"
-                      >
+                    x.categories.includes(orgCat) ? (
+                      <div className="w-80 rounded-lg shadow-inherit bg-slate-300 border-gray-700 border-2 shadow-lg text-black">
                         <div className="p-3">
                           <div className="flex justify-between">
                             <Image
@@ -114,7 +111,15 @@ const ExploreServices = () => {
                             </h5>
                           </div>
                           <div className="flex items-center justify-between">
-                            <ReactStars count={5} value={x.ratings} onChange={(newRating) => handleRating(newRating, x._id)} size={24} activeColor="#ffd700" />
+                            <ReactStars
+                              count={5}
+                              value={x.ratings}
+                              onChange={(newRating) =>
+                                handleRating(newRating, x._id)
+                              }
+                              size={24}
+                              activeColor="#ffd700"
+                            />
                             <AboutModal user={x} />
                           </div>
                         </div>

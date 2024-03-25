@@ -24,14 +24,11 @@ import {
 } from "./pages/Admin";
 import ForgetPassword from "./pages/ForgetPassword";
 import CategoryManagement from "./pages/Admin/CategoryManagement";
-import BeneficiaryProfile from "./pages/Benificiaries/BeneficiariesProfile";
 import Beneficiaries from "./pages/Benificiaries/Beneficiaries";
 import Volunteer_NavBar from "./components/VOLNAV";
 import Volunteers from "./pages/Volunteer/Volunteer";
-import VolunteerProfile from "./pages/Volunteer/VolunteerProfile";
 import Organization_Navbar from "./components/ORGNAV";
 import Organization from "./pages/Organization/Organization";
-import OrganizationProfile from "./pages/Organization/OrganizationProfile";
 import Request from "./pages/Benificiaries/Request";
 import Dontation from "./pages/Benificiaries/Dontation";
 import OrgRequest from "./pages/Organization/OrgRequest";
@@ -194,7 +191,7 @@ const App = () => {
           <ReqDontation />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/beneficiary/BeneficiaryProfile",
@@ -225,7 +222,7 @@ const App = () => {
           <CategoryRequest />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/volunteer/volunteerProfile",
@@ -266,7 +263,7 @@ const App = () => {
           <DonationReq />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/organization/organization",
@@ -317,7 +314,7 @@ const App = () => {
           <CategoryRequest />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/organization/beneficiaryDonations",
@@ -327,7 +324,7 @@ const App = () => {
           <DonationReq />
           <Footer />
         </>
-      )
+      ),
     },
     {
       path: "/adminLogin",
@@ -375,7 +372,7 @@ const App = () => {
     },
     {
       path: "/admin/donationBenReq",
-      element: <DonationBenReq />
+      element: <DonationBenReq />,
     },
     {
       path: "/admin/settings",

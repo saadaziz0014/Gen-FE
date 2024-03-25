@@ -10,6 +10,7 @@ export default function BProfile() {
   const [user, setUser] = useState();
   const [err, setErr] = useState(false);
   const [city, setCity] = useState();
+  const [dialer, setDialer] = useState();
   const [about, setAbout] = useState();
   const [contact, setContact] = useState();
   const [history, setHistory] = useState();
@@ -121,7 +122,7 @@ export default function BProfile() {
       location: city,
       about,
       firstName,
-      lastName
+      lastName,
     });
     if (resp.status == 201) {
       toast({
@@ -152,6 +153,11 @@ export default function BProfile() {
     setCities(resp.data.cities);
     // console.log(cities);
   };
+  const fetchDialer = async () => {
+    const resp = await axios.get(`${BE}users/dialer/load`);
+    setDialer(resp.data.dialers);
+    // console.log(dialer);
+  };
   const handleChangeCompo = (index) => {
     let stateY = options;
     if (index == 1) {
@@ -170,6 +176,7 @@ export default function BProfile() {
     fetchData();
     fetchHistory();
     fetchCities();
+    fetchDialer();
     const patternP = /^(?=.*[A-Z]).+$/;
     if (data.newPassword.length != 0 && !patternP.test(data.newPassword)) {
       setErr(true);
@@ -194,8 +201,9 @@ export default function BProfile() {
             {options &&
               options.map((opt, index) => (
                 <h1
-                  className={`${opt.selected && `border-l border-blue-700`
-                    } pl-3 cursor-pointer`}
+                  className={`${
+                    opt.selected && `border-l border-blue-700`
+                  } pl-3 cursor-pointer`}
                   onClick={() => handleChangeCompo(index)}
                   key={index}
                 >
@@ -238,7 +246,11 @@ export default function BProfile() {
                       type="text"
                       placeholder="First Name"
                       value={firstName}
-                      onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setFirstName(e.target.value) }}
+                      onChange={(e) => {
+                        const patternN = /^[A-Za-z]+$/;
+                        patternN.test(e.target.value) &&
+                          setFirstName(e.target.value);
+                      }}
                       className="border p-1"
                     />
                   </div>
@@ -248,7 +260,11 @@ export default function BProfile() {
                       type="text"
                       placeholder="Last Name"
                       value={lastName}
-                      onChange={(e) => { const patternN = /^[A-Za-z]+$/; patternN.test(e.target.value) && setLastName(e.target.value) }}
+                      onChange={(e) => {
+                        const patternN = /^[A-Za-z]+$/;
+                        patternN.test(e.target.value) &&
+                          setLastName(e.target.value);
+                      }}
                       className="border p-1"
                     />
                   </div>
@@ -284,13 +300,23 @@ export default function BProfile() {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label htmlFor="contact">Contact</label>
-                    <input
-                      type="text"
-                      placeholder="Contact"
-                      className="border p-1"
-                      value={contact}
-                      onChange={(e) => setContact(e.target.value)}
-                    />
+                    <div className="flex">
+                      <select name="" id="">
+                        {dialer &&
+                          dialer.map((dialer) => (
+                            <option value={dialer.dial_code} key={dialer._id}>
+                              {dialer.dial_code}
+                            </option>
+                          ))}
+                      </select>
+                      <input
+                        type="text"
+                        placeholder="Contact"
+                        className="border p-1"
+                        value={contact}
+                        onChange={(e) => setContact(e.target.value)}
+                      />
+                    </div>
                     {errC == true && (
                       <p className="text-red-600 font-medium">Invalid Number</p>
                     )}
