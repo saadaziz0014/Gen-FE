@@ -75,6 +75,7 @@ export default function OrgRequestModal({ request }) {
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>Decision</ModalHeader>
+                    <ModalCloseButton onClick={() => { onCloseC(); onClose() }} />
                     <Flex justifyContent="center" marginBottom={6}>
                         <Flex columnGap={2}>
                             <Button color="white" backgroundColor="blue.500" _hover={{ backgroundColor: "blue.600" }} onClick={() => send("Accepted")}>Accept</Button>

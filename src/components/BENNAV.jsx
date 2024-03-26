@@ -1,11 +1,12 @@
 import "./bennav.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { scrollToTop } from "../constants/scrollToTop";
 import { useToast } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 const BenNav = ({ navBar2, showCase1Page }) => {
+  const location = useLocation();
   const navigate = useNavigate();
   const toast = useToast();
   const [whenScroll, setWhenScroll] = useState("bg-transparent");
@@ -57,12 +58,12 @@ const BenNav = ({ navBar2, showCase1Page }) => {
   return (
     <>
       <div
-        style={{ zIndex: 98 }}
+        style={{ zIndex: 99 }}
         className={`${"bg-white shadow-xl"} ${"shadow-xl"} transition-all fixed top-0 left-0 right-0 `}
       >
         <nav
           style={{ maxWidth: 1200 }}
-          className="flex justify-between mx-auto items-center gap-4 py-2 max-md:py-5 px-10 max-sm:px-5 font-medium"
+          className="flex justify-between mx-auto items-center gap-4  px-10 max-sm:px-5 font-medium"
         >
           <Link onClick={scrollToTop} to="/">
             <img
@@ -76,14 +77,14 @@ const BenNav = ({ navBar2, showCase1Page }) => {
           >
             <Link
               onClick={scrollToTop}
-              className="hover:text-orange-400 transition-all"
+              className={`${location.pathname == "/beneficiary/beneficiary" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
               to="/beneficiary/beneficiary"
             >
               Beneficiaries
             </Link>
             <Link
               onClick={scrollToTop}
-              className="hover:text-orange-400 transition-all"
+              className={`${location.pathname == "/beneficiary/beneficiaryExplore" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
               to="/beneficiary/beneficiaryExplore"
             >
               Explore Services
@@ -91,14 +92,14 @@ const BenNav = ({ navBar2, showCase1Page }) => {
 
             <Link
               onClick={scrollToTop}
-              className="hover:text-orange-400 transition-all"
+              className={`${location.pathname == "/beneficiary/beneficiaryRequest" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
               to="/beneficiary/beneficiaryRequest"
             >
               Request Services
             </Link>
             <Link
               onClick={scrollToTop}
-              className="hover:text-orange-400 transition-all"
+              className={`${location.pathname == "/beneficiary/donationReqBen" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
               to="/beneficiary/donationReqBen"
             >
               Donation Services
@@ -106,7 +107,7 @@ const BenNav = ({ navBar2, showCase1Page }) => {
 
             <Link
               onClick={scrollToTop}
-              className="hover:text-orange-400 transition-all"
+              className={`${location.pathname == "/beneficiary/beneficiaryDonation" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
               to="/beneficiary/beneficiaryDonation"
             >
               Donation Requests
@@ -171,7 +172,7 @@ const BenNav = ({ navBar2, showCase1Page }) => {
               scrollToTop();
             }}
             to="/"
-            className="hover:text-orange-400 transition-all"
+            className={`${location.pathname == "/beneficiary/" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
           >
             Beneficiaries
           </Link>
@@ -181,7 +182,7 @@ const BenNav = ({ navBar2, showCase1Page }) => {
               scrollToTop();
             }}
             to="/services"
-            className="hover:text-orange-400 transition-all"
+            className={`${location.pathname == "/beneficiary/" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
           >
             Explore Services
           </Link>

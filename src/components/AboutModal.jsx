@@ -156,7 +156,6 @@ export default function AboutModal(props) {
                   setErr(false);
                 }}
               >
-                <option value="">Select</option>
                 {props.user.cats.map((cat, index) => (
                   <option key={index} value={cat}>
                     {cat}
