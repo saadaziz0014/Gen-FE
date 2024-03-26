@@ -123,7 +123,7 @@ export default function DonationBen() {
                   placeholder="Title"
                   value={title}
                   onChange={(e) => {
-                    const patter = /^[A-Za-z\b]+$/;
+                    const patter = /^[A-Za-z ]*$/;;
                     patter.test(e.target.value) && setTitle(e.target.value);
                   }}
                 />
@@ -136,7 +136,7 @@ export default function DonationBen() {
                   placeholder="Amount"
                   value={amount}
                   onChange={(e) => {
-                    const patter = /^[0-9\b]+$/;
+                    const patter = /^[0-9]*$/;
                     patter.test(e.target.value) && setAmount(e.target.value);
                   }}
                 />
@@ -174,7 +174,7 @@ export default function DonationBen() {
                     placeholder="Full Name"
                     value={iName}
                     onChange={(e) => {
-                      const patter = /^[A-Za-z\b]+$/;
+                      const patter = /^[A-Za-z ]*$/;
                       patter.test(e.target.value) && setIName(e.target.value);
                     }}
                   />
@@ -187,7 +187,7 @@ export default function DonationBen() {
                     placeholder="1234567890123"
                     value={iCNIC}
                     onChange={(e) => {
-                      const patter = /^[\d\b]{0,13}$/;
+                      const patter = /^[0-9]{0,13}$/;
                       patter.test(e.target.value) && setICNIC(e.target.value);
                     }}
                   />
@@ -196,22 +196,23 @@ export default function DonationBen() {
               <div className="flex justify-between">
                 <div className="flex items-center gap-2">
                   <label htmlFor="iPhone">Phone: </label>
-                  <div className="flex">
-                    <select name="" id="">
-                      {dialer &&
-                        dialer.map((dialer) => (
-                          <option value={dialer.dial_code} key={dialer._id}>
-                            {dialer.dial_code}
-                          </option>
-                        ))}
-                    </select>
+                  <div className="flex gap-2">
+                    {/* <select name="" id="">
+                        {dialer &&
+                          dialer.map((dialer) => (
+                            <option value={dialer.dial_code} key={dialer._id}>
+                              {dialer.dial_code}
+                            </option>
+                          ))}
+                      </select> */}
+                    <input type="text" className="w-8" placeholder="+92" />
                     <Input
                       variant="filled"
                       size="md"
                       placeholder="Phone"
                       value={iPhone}
                       onChange={(e) => {
-                        const patter = /^[\d\b]{0,11}$/;
+                        const patter = /^[0-9]{0,10}$/;
                         patter.test(e.target.value) &&
                           setIPhone(e.target.value);
                       }}
@@ -246,7 +247,7 @@ export default function DonationBen() {
                     placeholder="Full Name"
                     value={cName}
                     onChange={(e) => {
-                      const patter = /^[A-Za-z\b]+$/;
+                      const patter = /^[A-Za-z ]*$/;
                       patter.test(e.target.value) && setCName(e.target.value);
                     }}
                   />
@@ -259,7 +260,7 @@ export default function DonationBen() {
                     placeholder="1234567890123"
                     value={cCNIC}
                     onChange={(e) => {
-                      const patter = /^[\d\b]{0,13}$/;
+                      const patter = /^[0-9]{0,13}$/;
                       patter.test(e.target.value) && setCCNIC(e.target.value);
                     }}
                   />
@@ -268,22 +269,23 @@ export default function DonationBen() {
               <div className="flex justify-between">
                 <div className="flex items-center gap-2">
                   <label htmlFor="iPhone">Phone: </label>
-                  <div className="flex">
-                    <select name="" id="">
-                      {dialer &&
-                        dialer.map((dialer) => (
-                          <option value={dialer.dial_code} key={dialer._id}>
-                            {dialer.dial_code}
-                          </option>
-                        ))}
-                    </select>
+                  <div className="flex gap-2">
+                    {/* <select name="" id="">
+                        {dialer &&
+                          dialer.map((dialer) => (
+                            <option value={dialer.dial_code} key={dialer._id}>
+                              {dialer.dial_code}
+                            </option>
+                          ))}
+                      </select> */}
+                    <input type="text" className="w-8" placeholder="+92" />
                     <Input
                       variant="filled"
                       size="md"
                       placeholder="Phone"
                       value={cPhone}
                       onChange={(e) => {
-                        const patter = /^[\d\b]{0,11}$/;
+                        const patter = /^[0-9]{0,10}$/;
                         patter.test(e.target.value) &&
                           setCPhone(e.target.value);
                       }}

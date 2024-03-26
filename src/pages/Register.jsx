@@ -89,11 +89,11 @@ const Register = () => {
   };
 
   return (
-    <section className="bg-[#FFFFFF] mt-60 mb-36">
+    <section className="bg-[#FFFFFF] mt-72 mb-40">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gray-800 border-gray-700">
+        <div className="w-full  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-white">
+            <h1 className="text-xl font-bold leading-tight tracking-tight">
               Create and account
             </h1>
             <form
@@ -105,7 +105,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="firstName"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium"
                 >
                   First Name
                 </label>
@@ -113,7 +113,7 @@ const Register = () => {
                   type="text"
                   name="firstName"
                   id="firstName"
-                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   value={firstName}
                   onChange={(e) => {
                     const patternN = /^[A-Za-z]+$/;
@@ -127,7 +127,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="lastName"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium "
                 >
                   Last Name
                 </label>
@@ -135,7 +135,7 @@ const Register = () => {
                   type="text"
                   name="lastName"
                   id="lastName"
-                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   value={lastName}
                   onChange={(e) => {
                     const patternN = /^[A-Za-z]+$/;
@@ -149,7 +149,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium "
                 >
                   Your email
                 </label>
@@ -157,7 +157,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   id="email"
-                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
@@ -168,7 +168,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="username"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium "
                 >
                   Your username
                 </label>
@@ -176,7 +176,7 @@ const Register = () => {
                   type="text"
                   name="name"
                   id="name"
-                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="name"
@@ -187,31 +187,31 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium "
                 >
                   Your role
                 </label>
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option
                     value="beneficiary"
                     selected
-                    className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   >
                     Beneficiary
                   </option>
                   <option
                     value="volunteer"
-                    className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   >
                     Volunteer
                   </option>
                   <option
                     value="organization"
-                    className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                    className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   >
                     Organization
                   </option>
@@ -220,7 +220,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium "
                 >
                   Password
                 </label>
@@ -231,7 +231,7 @@ const Register = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500"
+                  className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
                 <span className={errP.css}>{errP.message}</span>
@@ -239,7 +239,7 @@ const Register = () => {
               <div>
                 <label
                   htmlFor="city"
-                  className="block mb-2 text-sm font-medium text-white"
+                  className="block mb-2 text-sm font-medium "
                 >
                   City
                 </label>
@@ -247,8 +247,7 @@ const Register = () => {
                   onChange={(e) => setCity(e.target.value)}
                   className=" border 
                   sm:text-sm rounded-lg focus:ring-primary-600
-                  focus:border-primary-600 block w-full p-2.5 bg-gray-700
-                  border-gray-600 placeholder-gray-400 text-white
+                  focus:border-primary-600 block w-full p-2.5 placeholder-gray-400 
                   focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Select</option>
@@ -259,8 +258,7 @@ const Register = () => {
                         value={city.name}
                         className=" border 
                   sm:text-sm rounded-lg focus:ring-primary-600
-                  focus:border-primary-600 block w-full p-2.5 bg-gray-700
-                  border-gray-600 placeholder-gray-400 text-white
+                  focus:border-primary-600 block w-full p-2.5  placeholder-gray-400 
                   focus:ring-blue-500 focus:border-blue-500"
                       >
                         {city.name}
@@ -270,7 +268,7 @@ const Register = () => {
               </div>
               <button
                 type="submit"
-                className="w-full text-white  focus:ring-4 focus:outline-none bg-[#FDBA74]  font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-orange-500 focus:ring-primary-800"
+                className="w-full   focus:ring-4 focus:outline-none bg-[#FDBA74]  font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-primary-600 hover:bg-orange-500 focus:ring-primary-800"
               >
                 Sign Up
               </button>

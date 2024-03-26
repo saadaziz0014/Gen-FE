@@ -42,7 +42,7 @@ export default function BProfile() {
     setUser(resp.data.user);
     contact == undefined && setContact(resp.data.user.contact);
     name == undefined && setName(resp.data.user.name);
-    location == undefined && setCity(resp.data.user.location);
+    city == undefined && setCity(resp.data.user.location);
     about == undefined && setAbout(resp.data.user.about);
     firstName == undefined && setFirstName(resp.data.user.firstName);
     lastName == undefined && setLastName(resp.data.user.lastName);
@@ -201,9 +201,8 @@ export default function BProfile() {
             {options &&
               options.map((opt, index) => (
                 <h1
-                  className={`${
-                    opt.selected && `border-l border-blue-700`
-                  } pl-3 cursor-pointer`}
+                  className={`${opt.selected && `border-l border-blue-700`
+                    } pl-3 cursor-pointer`}
                   onClick={() => handleChangeCompo(index)}
                   key={index}
                 >
@@ -300,15 +299,16 @@ export default function BProfile() {
                   </div>
                   <div className="flex flex-col gap-1">
                     <label htmlFor="contact">Contact</label>
-                    <div className="flex">
-                      <select name="" id="">
+                    <div className="flex gap-2">
+                      {/* <select name="" id="">
                         {dialer &&
                           dialer.map((dialer) => (
                             <option value={dialer.dial_code} key={dialer._id}>
                               {dialer.dial_code}
                             </option>
                           ))}
-                      </select>
+                      </select> */}
+                      <input type="text" className="w-8" placeholder="+92" />
                       <input
                         type="text"
                         placeholder="Contact"

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { animationVariants } from "../constants/animationVariants";
 import { servicesData } from "../constants/servicesData";
 import { useEffect } from "react";
+import NavBar from "../components/Navbar";
 
 const Service = () => {
   const navigate = useNavigate();
@@ -14,18 +15,19 @@ const Service = () => {
   useEffect(() => {
     // console.log(serviceData);
     if (serviceData === -1) {
-      navigate("/*");
+      navigate("/");
     }
   }, []);
   return (
     <>
+      <NavBar />
       <div
         style={{
           backgroundImage: `url(${serviceData.image})`,
         }}
-        className="relative bg-no-repeat bg-center bg-cover pt-44 pb-36 max-md:pt-36 max-md:pb-24 flex justify-center items-center text-white "
+        className="bg-no-repeat bg-center bg-cover pt-44 pb-36 max-md:pt-36 max-md:pb-24 flex justify-center items-center text-white "
       >
-        <div className="absolute top-0 bottom-0 left-0 right-0 bg-blue-400/50"></div>
+        <div className="bg-blue-400/50"></div>
         <motion.h1
           initial="initial"
           whileInView="animate"
