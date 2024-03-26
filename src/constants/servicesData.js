@@ -2,7 +2,7 @@ export const servicesData = [
   {
     id: 1,
     image: "/services-page-images/service-hero-bg.jpg",
-    title: "Services",
+    title: "Beneficiaries Assistance",
     icon: "/icons/quality-first.png",
     shortDescription:
       "Providing support and assistance to individuals in need.",
