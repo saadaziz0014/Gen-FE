@@ -123,8 +123,10 @@ export default function DonationBen() {
                   placeholder="Title"
                   value={title}
                   onChange={(e) => {
-                    const patter = /^[A-Za-z ]*$/;;
-                    patter.test(e.target.value) && setTitle(e.target.value);
+                    const patter = /^[A-Za-z ]*$/;
+                    patter.test(e.target.value)
+                      ? setTitle(e.target.value)
+                      : null;
                   }}
                 />
               </div>
@@ -136,7 +138,7 @@ export default function DonationBen() {
                   placeholder="Amount"
                   value={amount}
                   onChange={(e) => {
-                    const patter = /^[0-9]*$/;
+                    const patter = /^[0-9]{0,2000000}$/;
                     patter.test(e.target.value) && setAmount(e.target.value);
                   }}
                 />

@@ -51,24 +51,35 @@ export default function Community() {
       <div className="flex justify-end">
         <CommunityModal />
       </div>
-      <div className="grid grid-cols-2 my-4">
+      <div className="grid grid-cols-3 my-4">
         {communities &&
           communities.map((x) => (
-            <Card key={x._id} maxW='sm' width={80}>
+            <Card key={x._id} maxW="sm" width={80} marginBottom={5}>
               <CardHeader>
                 <Heading size="md">{x.title}</Heading>
               </CardHeader>
 
               <CardBody>
                 <Flex justifyContent="center">
-                  <Image src={communityOrg} alt="Community" borderRadius="md" objectFit="contain" width={24} height={24} />
+                  <Image
+                    src={communityOrg}
+                    alt="Community"
+                    borderRadius="md"
+                    objectFit="contain"
+                    width={24}
+                    height={24}
+                  />
                 </Flex>
                 <Stack divider={<StackDivider />} spacing="2">
                   <Box marginTop={5}>
                     <Heading size="xs" textTransform="uppercase">
                       Volunteers
                     </Heading>
-                    <CommunityMember id={x._id} title={x.title} value={x.value} />
+                    <CommunityMember
+                      id={x._id}
+                      title={x.title}
+                      value={x.value}
+                    />
                   </Box>
                   <Box>
                     <Heading size="xs" textTransform="uppercase">
@@ -93,6 +104,6 @@ export default function Community() {
             </Card>
           ))}
       </div>
-    </div >
+    </div>
   );
 }
