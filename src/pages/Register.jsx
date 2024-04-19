@@ -116,7 +116,7 @@ const Register = () => {
                   className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   value={firstName}
                   onChange={(e) => {
-                    const patternN = /^[A-Za-z]+$/;
+                    const patternN = /^([A-Za-z]+|\b)$/;
                     patternN.test(e.target.value) &&
                       setFirstName(e.target.value);
                   }}
@@ -138,7 +138,7 @@ const Register = () => {
                   className="border  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500"
                   value={lastName}
                   onChange={(e) => {
-                    const patternN = /^[A-Za-z]+$/;
+                    const patternN = /^([A-Za-z]+|\b)$/;
                     patternN.test(e.target.value) &&
                       setLastName(e.target.value);
                   }}

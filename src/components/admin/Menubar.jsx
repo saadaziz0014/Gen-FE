@@ -24,7 +24,7 @@ const Menubar = () => {
   const handleLogout = () => {
     Cookies.remove("adminToken");
     Cookies.remove("role");
-    navigate("/adminLogin");
+    navigate("/");
   };
 
   const menuItems = [
