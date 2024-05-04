@@ -17,10 +17,12 @@ import axios from "axios";
 import { useState } from "react";
 import { BE } from "../constants/constants";
 import Cookies from "js-cookie";
+import Loading from "./Loading";
 
 export default function DonationBox() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
+  const [loading, setLoading] = useState(false);
   const {
     isOpen: isOpenC,
     onOpen: onOpenC,
@@ -59,6 +61,9 @@ export default function DonationBox() {
     onOpenC();
   };
   const send = async () => {
+    setLoading(true);
+    onClose();
+    onCloseC();
     const resp = await axios.post(`${BE}donation/add`, {
       amount,
       number,
@@ -79,6 +84,7 @@ export default function DonationBox() {
       });
       setAmount(0);
       setNumber("");
+      setLoading(false);
     } else {
       onClose();
       onCloseC();
@@ -94,8 +100,12 @@ export default function DonationBox() {
       });
       setAmount(0);
       setNumber("");
+      setLoading(false);
     }
   };
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <>
       <Button
@@ -160,6 +170,7 @@ export default function DonationBox() {
               <Button
                 color="white"
                 backgroundColor="blue.500"
+                disabled={loading}
                 _hover={{ backgroundColor: "blue.600" }}
                 onClick={() => {
                   onCloseC();
@@ -171,6 +182,7 @@ export default function DonationBox() {
               <Button
                 color="white"
                 backgroundColor="red.500"
+                disabled={loading}
                 _hover={{ backgroundColor: "red.600" }}
                 onClick={send}
               >

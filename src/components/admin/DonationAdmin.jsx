@@ -18,9 +18,11 @@ import { useState } from "react";
 
 import { FaRegEye } from "react-icons/fa6";
 import { BE } from "../../constants/constants";
+import Loading from "../Loading";
 
 export default function DonationAdmin({ donation }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [loading, setLoading] = useState(false);
   const toast = useToast();
   const {
     isOpen: isOpenC,
@@ -46,6 +48,9 @@ export default function DonationAdmin({ donation }) {
     onOpenC();
   };
   const send = async () => {
+    setLoading(true);
+    onClose();
+    onCloseC();
     const resp = await axios.post(
       `${BE}adminDonation/addAmount/${donation._id}`,
       {
@@ -64,6 +69,7 @@ export default function DonationAdmin({ donation }) {
         },
       });
       setAmount(0);
+      setLoading(false);
     } else {
       toast({
         title: resp.data.message,
@@ -76,10 +82,14 @@ export default function DonationAdmin({ donation }) {
         },
       });
       setAmount(0);
+      setLoading(false);
     }
     onClose();
     onCloseC();
   };
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <>
       <FaRegEye
