@@ -29,11 +29,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div
-        style={{}}
-        className={`${"bg-white shadow-lg"} ${whenScroll === "bg-white" ? "shadow-lg" : ""
-          } transition-all fixed top-0 left-0 right-0 `}
-      >
+      <div style={{}} className="bg-white sticky top-0 z-50">
         <nav
           style={{ maxWidth: 1200 }}
           className="flex justify-between mx-auto items-center gap-4 px-5 font-medium"
@@ -110,14 +106,16 @@ const NavBar = () => {
           setViewSideNav(!viewSideNav);
         }}
         style={{ zIndex: 99 }}
-        className={`fixed ${viewSideNav ? "translate-x-0" : "-translate-x-full"
-          } top-0 left-0 bottom-0 right-0  bg-black/40`}
+        className={`fixed ${
+          viewSideNav ? "translate-x-0" : "-translate-x-full"
+        } top-0 left-0 bottom-0 right-0  bg-black/40`}
       ></div>
       <nav
         style={{ zIndex: 100 }}
         // style={{ height: 8000 }}
-        className={`fixed top-0 bottom-0 hidden max-lg:block ${viewSideNav ? "translate-x-0" : "-translate-x-full"
-          } bg-white  left-0 w-96 px-10 z-30 transition-all font-medium`}
+        className={`fixed top-0 bottom-0 hidden max-lg:block ${
+          viewSideNav ? "translate-x-0" : "-translate-x-full"
+        } bg-white  left-0 w-96 px-10 z-30 transition-all font-medium`}
       >
         <div id="header" className="flex justify-between items-center">
           <img className="w-32 h-20" src="/GEN-Serve.jpg" alt="GEN-Serve" />
@@ -171,8 +169,9 @@ const NavBar = () => {
           </NavLink>
           <div className="relative">
             <div
-              className={`${showcaseDropDown ? "top-[114px]" : "top-[41px]"
-                } transition-all duration-200 absolute  w-full bg-white h-24`}
+              className={`${
+                showcaseDropDown ? "top-[114px]" : "top-[41px]"
+              } transition-all duration-200 absolute  w-full bg-white h-24`}
             >
               <NavLink
                 onClick={() => {

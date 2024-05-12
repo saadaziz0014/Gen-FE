@@ -27,6 +27,7 @@ export default function DonationBenefactor({ donation }) {
     onClose: onCloseC,
   } = useDisclosure();
   const [amount, setAmount] = useState(0);
+  const [number, setNumber] = useState();
   const handleSend = async () => {
     if (amount <= 0) {
       toast({
@@ -65,6 +66,7 @@ export default function DonationBenefactor({ donation }) {
         },
       });
       setAmount(0);
+      setNumber("");
       setLoading(false);
     }
   };
@@ -94,6 +96,17 @@ export default function DonationBenefactor({ donation }) {
               type="number"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
+            />
+            <h1 className="font-semibold">JazzCash Number</h1>
+            <Input
+              type="number"
+              value={number}
+              onChange={(e) => {
+                const numberPattern = /^[0-9]{0,10}$/;
+                if (numberPattern.test(e.target.value)) {
+                  setNumber(e.target.value);
+                }
+              }}
             />
           </ModalBody>
 

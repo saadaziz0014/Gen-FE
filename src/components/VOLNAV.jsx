@@ -56,10 +56,7 @@ const Volunteer_NavBar = ({ navBar2, showCase1Page }) => {
 
   return (
     <>
-      <div
-        style={{ zIndex: 98 }}
-        className={`${"bg-white shadow-xl"} ${"shadow-xl"} transition-all fixed top-0 left-0 right-0 `}
-      >
+      <div style={{ zIndex: 98 }} className="bg-white sticky top-0 z-50">
         <nav
           style={{ maxWidth: 1200 }}
           className="flex justify-between mx-auto items-center gap-2 py-2 max-md:py-5 px-5 max-sm:px-5 font-medium"

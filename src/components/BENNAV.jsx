@@ -37,8 +37,7 @@ const BenNav = ({ navBar2, showCase1Page }) => {
     };
     if (
       !Cookies.get("role") ||
-      Cookies.get("role") != "beneficiary" &&
-      Cookies.get("role") != "admin"
+      (Cookies.get("role") != "beneficiary" && Cookies.get("role") != "admin")
     ) {
       toast({
         title: "Only Beneficiary Allowed",
@@ -57,10 +56,7 @@ const BenNav = ({ navBar2, showCase1Page }) => {
 
   return (
     <>
-      <div
-        style={{ zIndex: 99 }}
-        className={`${"bg-white shadow-xl"} ${"shadow-xl"} transition-all fixed top-0 left-0 right-0 `}
-      >
+      <div style={{ zIndex: 99 }} className="bg-white sticky top-0 z-50">
         <nav
           style={{ maxWidth: 1200 }}
           className="flex justify-between mx-auto items-center gap-4  px-10 max-sm:px-5 font-medium"
@@ -77,14 +73,20 @@ const BenNav = ({ navBar2, showCase1Page }) => {
           >
             <Link
               onClick={scrollToTop}
-              className={`${location.pathname == "/beneficiary/beneficiary" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+              className={`${
+                location.pathname == "/beneficiary/beneficiary" &&
+                "bg-orange-500 p-1 text-white"
+              } hover:text-orange-500`}
               to="/beneficiary/beneficiary"
             >
               Beneficiaries
             </Link>
             <Link
               onClick={scrollToTop}
-              className={`${location.pathname == "/beneficiary/beneficiaryExplore" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+              className={`${
+                location.pathname == "/beneficiary/beneficiaryExplore" &&
+                "bg-orange-500 p-1 text-white"
+              } hover:text-orange-500`}
               to="/beneficiary/beneficiaryExplore"
             >
               Explore Services
@@ -92,14 +94,20 @@ const BenNav = ({ navBar2, showCase1Page }) => {
 
             <Link
               onClick={scrollToTop}
-              className={`${location.pathname == "/beneficiary/beneficiaryRequest" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+              className={`${
+                location.pathname == "/beneficiary/beneficiaryRequest" &&
+                "bg-orange-500 p-1 text-white"
+              } hover:text-orange-500`}
               to="/beneficiary/beneficiaryRequest"
             >
               Request Services
             </Link>
             <Link
               onClick={scrollToTop}
-              className={`${location.pathname == "/beneficiary/donationReqBen" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+              className={`${
+                location.pathname == "/beneficiary/donationReqBen" &&
+                "bg-orange-500 p-1 text-white"
+              } hover:text-orange-500`}
               to="/beneficiary/donationReqBen"
             >
               Donation Services
@@ -107,7 +115,10 @@ const BenNav = ({ navBar2, showCase1Page }) => {
 
             <Link
               onClick={scrollToTop}
-              className={`${location.pathname == "/beneficiary/beneficiaryDonation" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+              className={`${
+                location.pathname == "/beneficiary/beneficiaryDonation" &&
+                "bg-orange-500 p-1 text-white"
+              } hover:text-orange-500`}
               to="/beneficiary/beneficiaryDonation"
             >
               Donation Requests
@@ -122,7 +133,11 @@ const BenNav = ({ navBar2, showCase1Page }) => {
             >
               <button className="text-xl px-5 py-2">Logout</button>
             </Link>
-            <Link onClick={scrollToTop} to="/beneficiary/BeneficiaryProfile" className="transition-all w-full block">
+            <Link
+              onClick={scrollToTop}
+              to="/beneficiary/BeneficiaryProfile"
+              className="transition-all w-full block"
+            >
               <img src="/profile-icon.png" alt="aa" />
             </Link>
           </ul>
@@ -135,14 +150,16 @@ const BenNav = ({ navBar2, showCase1Page }) => {
           setViewSideNav(!viewSideNav);
         }}
         style={{ zIndex: 99 }}
-        className={`fixed ${viewSideNav ? "translate-x-0" : "-translate-x-full"
-          } top-0 left-0 bottom-0 right-0  bg-black/40`}
+        className={`fixed ${
+          viewSideNav ? "translate-x-0" : "-translate-x-full"
+        } top-0 left-0 bottom-0 right-0  bg-black/40`}
       ></div>
       <nav
         style={{ zIndex: 100 }}
         // style={{ height: 8000 }}
-        className={`fixed top-0 bottom-0 hidden max-lg:block ${viewSideNav ? "translate-x-0" : "-translate-x-full"
-          } bg-white  left-0 w-96 p-5 px-10 max-sm:px-5 max-sm:w-80 z-30 transition-all font-medium`}
+        className={`fixed top-0 bottom-0 hidden max-lg:block ${
+          viewSideNav ? "translate-x-0" : "-translate-x-full"
+        } bg-white  left-0 w-96 p-5 px-10 max-sm:px-5 max-sm:w-80 z-30 transition-all font-medium`}
       >
         <div id="header" className="flex justify-between items-center">
           <img className="w-36" src="/Homyz-logo2.png" alt="Homyz-logo2" />
@@ -172,7 +189,10 @@ const BenNav = ({ navBar2, showCase1Page }) => {
               scrollToTop();
             }}
             to="/"
-            className={`${location.pathname == "/beneficiary/" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+            className={`${
+              location.pathname == "/beneficiary/" &&
+              "bg-orange-500 p-1 text-white"
+            } hover:text-orange-500`}
           >
             Beneficiaries
           </Link>
@@ -182,14 +202,18 @@ const BenNav = ({ navBar2, showCase1Page }) => {
               scrollToTop();
             }}
             to="/services"
-            className={`${location.pathname == "/beneficiary/" && 'bg-orange-500 p-1 text-white'} hover:text-orange-500`}
+            className={`${
+              location.pathname == "/beneficiary/" &&
+              "bg-orange-500 p-1 text-white"
+            } hover:text-orange-500`}
           >
             Explore Services
           </Link>
           <div className="relative">
             <div
-              className={`${showcaseDropDown ? "top-[114px]" : "top-[41px]"
-                } transition-all duration-200 absolute  w-full bg-white h-24`}
+              className={`${
+                showcaseDropDown ? "top-[114px]" : "top-[41px]"
+              } transition-all duration-200 absolute  w-full bg-white h-24`}
             >
               <Link
                 onClick={() => {

@@ -20,7 +20,6 @@ const Service = () => {
   }, []);
   return (
     <>
-      <NavBar />
       <div
         style={{
           backgroundImage: `url(${serviceData.image})`,
