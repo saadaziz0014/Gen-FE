@@ -19,6 +19,7 @@ export default function DonationBen() {
   const [dialer, setDialer] = useState();
   const [amount, setAmount] = useState();
   const [reason, setReason] = useState();
+  const [number, setNumber] = useState();
   const [iName, setIName] = useState();
   const [iCNIC, setICNIC] = useState();
   const [iPhone, setIPhone] = useState();
@@ -44,7 +45,8 @@ export default function DonationBen() {
       !cName ||
       !cCNIC ||
       !cPhone ||
-      !cAddress
+      !cAddress ||
+      !number
     ) {
       setValid(false);
       setErr("Fill All Details");
@@ -144,11 +146,9 @@ export default function DonationBen() {
                 />
               </div>
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-between mt-3">
               <div className="flex flex-col gap-3">
-                <label htmlFor="reason" className="font-bold">
-                  Reason:
-                </label>
+                <label htmlFor="reason">Reason:</label>
                 <Textarea
                   variant="filled"
                   size="md"
@@ -157,6 +157,19 @@ export default function DonationBen() {
                   placeholder="Details Here..."
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col gap-3">
+                <label htmlFor="number">Jazzcash Number:</label>
+                <Input
+                  variant="filled"
+                  size="md"
+                  placeholder="Jazzcash Number"
+                  value={number}
+                  onChange={(e) => {
+                    const pattern = /^[0-9]{0,10}$/;
+                    pattern.test(e.target.value) && setNumber(e.target.value);
+                  }}
                 />
               </div>
             </div>
